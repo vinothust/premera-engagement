@@ -1,5 +1,55 @@
 # Deployment Guide — UST × Premera Engagement Portal
 
+## Docker (Recommended)
+
+### Files added
+| File | Purpose |
+|---|---|
+| `Dockerfile` | Multi-stage build — Node builds, Nginx serves |
+| `nginx.conf` | Nginx config with React Router & asset caching |
+| `docker-compose.yml` | One-command run |
+| `.dockerignore` | Keeps the image lean |
+
+### Deploy on the Linux server
+
+```bash
+# 1. Clone / pull latest code
+git clone https://github.com/vinothust/premera-engagement.git
+cd premera-engagement
+
+# 2. Build and start (runs on port 80)
+docker compose up -d --build
+```
+
+**That's it.** The container builds the React app internally — no local `npm run build` needed.
+
+### Common commands
+```bash
+# View logs
+docker compose logs -f
+
+# Stop
+docker compose down
+
+# Rebuild after code changes
+docker compose up -d --build
+
+# Check running containers
+docker ps
+```
+
+### Run on a different port (e.g. 8080)
+Edit `docker-compose.yml`:
+```yaml
+ports:
+  - "8080:80"
+```
+Then run `docker compose up -d --build`.
+
+---
+
+## Manual Deploy (without Docker)
+
 ## 1. Build Locally (Windows)
 
 ```powershell
