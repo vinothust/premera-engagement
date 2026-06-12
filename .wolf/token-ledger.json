@@ -1,0 +1,756 @@
+{
+  "version": 1,
+  "created_at": "2026-06-12T05:19:47.268Z",
+  "lifetime": {
+    "total_tokens_estimated": 90254,
+    "total_reads": 23,
+    "total_writes": 109,
+    "total_sessions": 1,
+    "anatomy_hits": 17,
+    "anatomy_misses": 6,
+    "repeated_reads_blocked": 3,
+    "estimated_savings_vs_bare_cli": 13544
+  },
+  "sessions": [
+    {
+      "id": "session-2026-06-12-1116",
+      "started": "2026-06-12T05:46:45.837Z",
+      "ended": "2026-06-12T06:06:18.711Z",
+      "reads": [
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/package.json",
+          "tokens_estimated": 207,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 66,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 1042,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 620,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Dashboard.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/tsconfig.app.json",
+          "tokens_estimated": 177,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/status.ts",
+          "tokens_estimated": 1347,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/StatusDot.tsx",
+          "tokens_estimated": 113,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/Legend.tsx",
+          "tokens_estimated": 160,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/SlideHeader.tsx",
+          "tokens_estimated": 266,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 508,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 33,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 14,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 435,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/ChevronBanner.tsx",
+          "tokens_estimated": 278,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/TowerLevel.tsx",
+          "tokens_estimated": 705,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 1647,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 3100,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 844,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 2051,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 92,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 864,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 32,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 10,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 60,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 197,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2112,
+        "output_tokens_estimated": 12793,
+        "reads_count": 7,
+        "writes_count": 21,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 5
+      }
+    },
+    {
+      "id": "session-2026-06-12-1116",
+      "started": "2026-06-12T05:46:45.837Z",
+      "ended": "2026-06-12T06:21:47.909Z",
+      "reads": [
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/package.json",
+          "tokens_estimated": 207,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 66,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 1042,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 620,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Dashboard.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/tsconfig.app.json",
+          "tokens_estimated": 177,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 3378,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/status.ts",
+          "tokens_estimated": 1347,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/StatusDot.tsx",
+          "tokens_estimated": 113,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/Legend.tsx",
+          "tokens_estimated": 160,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/SlideHeader.tsx",
+          "tokens_estimated": 266,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 508,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 33,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 14,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 435,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/ChevronBanner.tsx",
+          "tokens_estimated": 278,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/TowerLevel.tsx",
+          "tokens_estimated": 705,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 1647,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 3100,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 844,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 2051,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 92,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 864,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 32,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 10,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 60,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 197,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/status.ts",
+          "tokens_estimated": 217,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/portalData.ts",
+          "tokens_estimated": 2654,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/context/PortalDataContext.tsx",
+          "tokens_estimated": 461,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 87,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 22,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 32,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 25,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 31,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/SlideHeader.tsx",
+          "tokens_estimated": 246,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 1442,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/TowerLevel.tsx",
+          "tokens_estimated": 745,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Admin.tsx",
+          "tokens_estimated": 5447,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 104,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 1273,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 134,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 212,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 20,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/context/PortalDataContext.tsx",
+          "tokens_estimated": 30,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/API.md",
+          "tokens_estimated": 3974,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 5490,
+        "output_tokens_estimated": 29949,
+        "reads_count": 8,
+        "writes_count": 40,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 6
+      }
+    },
+    {
+      "id": "session-2026-06-12-1116",
+      "started": "2026-06-12T05:46:45.837Z",
+      "ended": "2026-06-12T06:30:32.600Z",
+      "reads": [
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/package.json",
+          "tokens_estimated": 207,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 66,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 1042,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 620,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Dashboard.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/tsconfig.app.json",
+          "tokens_estimated": 177,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 3383,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/status.ts",
+          "tokens_estimated": 1347,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/StatusDot.tsx",
+          "tokens_estimated": 113,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/Legend.tsx",
+          "tokens_estimated": 160,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/SlideHeader.tsx",
+          "tokens_estimated": 266,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 508,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 33,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 14,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 435,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/ChevronBanner.tsx",
+          "tokens_estimated": 278,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/TowerLevel.tsx",
+          "tokens_estimated": 705,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 1647,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 3100,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 844,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 2051,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 92,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 864,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 32,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Feedback.tsx",
+          "tokens_estimated": 10,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 60,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 197,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/status.ts",
+          "tokens_estimated": 217,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/data/portalData.ts",
+          "tokens_estimated": 2654,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/context/PortalDataContext.tsx",
+          "tokens_estimated": 461,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 87,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 22,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 32,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 25,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 31,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/SlideHeader.tsx",
+          "tokens_estimated": 246,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 1442,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/TowerLevel.tsx",
+          "tokens_estimated": 745,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/Admin.tsx",
+          "tokens_estimated": 5447,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/main.tsx",
+          "tokens_estimated": 104,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/App.tsx",
+          "tokens_estimated": 1273,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/index.css",
+          "tokens_estimated": 134,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 212,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 20,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/context/PortalDataContext.tsx",
+          "tokens_estimated": 30,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/API.md",
+          "tokens_estimated": 3974,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/MilestoneTable.tsx",
+          "tokens_estimated": 918,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/components/IssuesTable.tsx",
+          "tokens_estimated": 790,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 1674,
+          "action": "create"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 23,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/TowerLevel.tsx",
+          "tokens_estimated": 155,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 43,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 771,
+          "action": "edit"
+        },
+        {
+          "file": "d:/UST/Premera Engagement/ust-premera-engagement/src/pages/WaveModel.tsx",
+          "tokens_estimated": 92,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 5495,
+        "output_tokens_estimated": 34415,
+        "reads_count": 8,
+        "writes_count": 48,
+        "repeated_reads_blocked": 2,
+        "anatomy_lookups": 6
+      }
+    }
+  ],
+  "daemon_usage": [],
+  "waste_flags": [],
+  "optimization_report": {
+    "last_generated": null,
+    "patterns": []
+  }
+}
