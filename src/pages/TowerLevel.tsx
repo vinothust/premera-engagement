@@ -4,6 +4,7 @@ import ChevronBanner from '../components/ChevronBanner'
 import MilestoneTable from '../components/MilestoneTable'
 import IssuesTable from '../components/IssuesTable'
 import Legend from '../components/Legend'
+import RiskSummaryBanner from '../components/RiskSummaryBanner'
 import { usePortalData } from '../context/PortalDataContext'
 
 function BulletList({ items }: { items: string[] }) {
@@ -30,6 +31,8 @@ export default function TowerLevel() {
         sampleLines={['Status Reporting Sample', 'One report for ITO and one for BPO']}
         asOf={data.asOf}
       />
+
+      <RiskSummaryBanner issues={t.issues} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-6 lg:gap-8">
         {/* LEFT COLUMN */}

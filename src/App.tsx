@@ -6,10 +6,12 @@ import ProgramLevel from './pages/ProgramLevel'
 import TowerLevel from './pages/TowerLevel'
 import Feedback from './pages/Feedback'
 import Admin from './pages/Admin'
+import Risks from './pages/Risks'
 
 const NAV = [
   { to: '/program', label: 'Program Level' },
   { to: '/tower', label: 'Tower Level' },
+  { to: '/risks', label: 'Risks & Actions' },
   { to: '/feedback', label: 'Feedback to UST' },
 ]
 
@@ -102,6 +104,7 @@ export default function App() {
           <Route path="/" element={<Navigate to="/program" replace />} />
           <Route path="/program" element={<ProgramLevel />} />
           <Route path="/tower" element={<TowerLevel />} />
+          <Route path="/risks" element={<Risks />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<Navigate to="/program" replace />} />

@@ -24,12 +24,24 @@ export interface MilestoneSection {
   rows: MilestoneRow[]
 }
 
+export type ActionStatus = 'open' | 'inProgress' | 'closed'
+
+export interface RiskAction {
+  id: string
+  action: string
+  owner: string
+  dueDate: string
+  actionStatus: ActionStatus
+}
+
 export interface IssueRow {
   id: string
   issue: string
   mitigations: string[]
   date: string
   status: StatusKey
+  needsPremeraAttention?: boolean
+  riskActions?: RiskAction[]
 }
 
 export interface TowerGoLive {
@@ -140,10 +152,10 @@ export const DEFAULT_PORTAL_DATA: PortalData = {
         },
       ],
       issues: [
-        { id: 'pi1', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/24', status: 'atRisk' },
-        { id: 'pi2', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/28', status: 'atRisk' },
-        { id: 'pi3', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '3/10', status: 'atRisk' },
-        { id: 'pi4', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps', 'Mitigation plan / next steps'], date: '3/26', status: 'atRisk' },
+        { id: 'pi1', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/24', status: 'atRisk', needsPremeraAttention: true, riskActions: [{ id: 'ra1', action: '<<Risk mitigation action>>', owner: '<<Owner>>', dueDate: '3/15', actionStatus: 'open' }] },
+        { id: 'pi2', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/28', status: 'atRisk', riskActions: [{ id: 'ra2', action: '<<Risk mitigation action>>', owner: '<<Owner>>', dueDate: '3/20', actionStatus: 'inProgress' }] },
+        { id: 'pi3', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '3/10', status: 'atRisk', riskActions: [] },
+        { id: 'pi4', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps', 'Mitigation plan / next steps'], date: '3/26', status: 'atRisk', riskActions: [] },
       ],
     },
     bpo: {
@@ -199,10 +211,10 @@ export const DEFAULT_PORTAL_DATA: PortalData = {
         },
       ],
       issues: [
-        { id: 'bpi1', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/24', status: 'atRisk' },
-        { id: 'bpi2', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/28', status: 'atRisk' },
-        { id: 'bpi3', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '3/10', status: 'atRisk' },
-        { id: 'bpi4', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps', 'Mitigation plan / next steps'], date: '3/26', status: 'atRisk' },
+        { id: 'bpi1', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/24', status: 'atRisk', needsPremeraAttention: true, riskActions: [{ id: 'bra1', action: '<<Risk mitigation action>>', owner: '<<Owner>>', dueDate: '3/15', actionStatus: 'open' }] },
+        { id: 'bpi2', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/28', status: 'atRisk', riskActions: [{ id: 'bra2', action: '<<Risk mitigation action>>', owner: '<<Owner>>', dueDate: '3/20', actionStatus: 'inProgress' }] },
+        { id: 'bpi3', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '3/10', status: 'atRisk', riskActions: [] },
+        { id: 'bpi4', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps', 'Mitigation plan / next steps'], date: '3/26', status: 'atRisk', riskActions: [] },
       ],
     },
   },
@@ -249,10 +261,10 @@ export const DEFAULT_PORTAL_DATA: PortalData = {
       },
     ],
     issues: [
-      { id: 'ti1', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/23', status: 'atRisk' },
-      { id: 'ti2', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/24', status: 'atRisk' },
-      { id: 'ti3', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/26', status: 'atRisk' },
-      { id: 'ti4', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps', 'Mitigation plan / next steps'], date: '2/26', status: 'atRisk' },
+      { id: 'ti1', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/23', status: 'atRisk', needsPremeraAttention: true, riskActions: [{ id: 'tra1', action: '<<Risk mitigation action>>', owner: '<<Owner>>', dueDate: '3/10', actionStatus: 'open' }] },
+      { id: 'ti2', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/24', status: 'atRisk', riskActions: [{ id: 'tra2', action: '<<Risk mitigation action>>', owner: '<<Owner>>', dueDate: '3/15', actionStatus: 'inProgress' }] },
+      { id: 'ti3', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps'], date: '2/26', status: 'atRisk', riskActions: [] },
+      { id: 'ti4', issue: '<<Issue/Risk/Dependency>>', mitigations: ['Mitigation plan / next steps', 'Mitigation plan / next steps'], date: '2/26', status: 'atRisk', riskActions: [] },
     ],
   },
 }

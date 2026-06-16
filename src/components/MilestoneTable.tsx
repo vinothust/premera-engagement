@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { type MilestoneSection } from '../data/portalData'
 import StatusDot from './StatusDot'
+import QuickFeedback from './QuickFeedback'
 
 interface Props {
   headLabel: string
@@ -25,6 +26,7 @@ export default function MilestoneTable({
             <th className="text-left font-semibold px-3 py-2 w-24">Due Date</th>
             <th className="text-left font-semibold px-3 py-2 w-24">Revised Date</th>
             <th className="text-center font-semibold px-3 py-2 w-14">{statusLabel}</th>
+            <th className="text-center font-semibold px-3 py-2 w-20">Feedback</th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +44,9 @@ export default function MilestoneTable({
                   <td className="px-3 py-1.5 text-slate-600">{row.revised}</td>
                   <td className="px-3 py-1.5 text-center">
                     <StatusDot status={row.status} />
+                  </td>
+                  <td className="px-3 py-1.5 text-center">
+                    <QuickFeedback itemId={row.id} itemLabel={row.label} />
                   </td>
                 </tr>
               ))}
@@ -71,8 +76,9 @@ export default function MilestoneTable({
                     </div>
                   )}
                 </div>
-                <div className="pt-0.5 shrink-0">
+                <div className="flex items-center gap-1 shrink-0 pt-0.5">
                   <StatusDot status={row.status} />
+                  <QuickFeedback itemId={row.id} itemLabel={row.label} />
                 </div>
               </div>
             ))}

@@ -14,6 +14,8 @@ import MilestoneTable from '../components/MilestoneTable'
 import IssuesTable from '../components/IssuesTable'
 import Legend from '../components/Legend'
 import StatusDot from '../components/StatusDot'
+import RiskSummaryBanner from '../components/RiskSummaryBanner'
+import QuickFeedback from '../components/QuickFeedback'
 import { usePortalData } from '../context/PortalDataContext'
 import type { WorkstreamIcon, Workstream } from '../data/portalData'
 
@@ -61,6 +63,8 @@ export default function ProgramLevel() {
     <div className="slide">
       <SlideHeader title={`${p.levelLabel} Highlights`} sampleLines={['Program Level Status Reporting Sample']} asOf={data.asOf} />
 
+      <RiskSummaryBanner issues={p.issues} />
+
       <div className="flex gap-1 mb-6 border-b border-slate-200">
         {(['ito', 'bpo'] as const).map((k) => (
           <button
@@ -84,7 +88,8 @@ export default function ProgramLevel() {
               <thead>
                 <tr style={{ background: '#dfe3e6' }} className="text-slate-700">
                   <th className="text-left font-semibold px-3 py-2 w-[34%]">&nbsp;</th>
-                  <th className="text-center font-semibold px-3 py-2 w-16">Status</th>
+                  <th className="text-center font-semibold px-3 py-2 w-14">Status</th>
+                  <th className="text-center font-semibold px-3 py-2 w-20">Feedback</th>
                   <th className="text-center font-semibold px-3 py-2">Key Accomplishments</th>
                   <th className="text-center font-semibold px-3 py-2">Planned Activities</th>
                 </tr>
@@ -97,6 +102,9 @@ export default function ProgramLevel() {
                     </td>
                     <td className="px-3 py-3 text-center">
                       <StatusDot status={w.status} />
+                    </td>
+                    <td className="px-3 py-3 text-center">
+                      <QuickFeedback itemId={w.id} itemLabel={w.name} />
                     </td>
                     <td className="px-3 py-3">
                       <Bullets items={w.accomplishments} />
@@ -114,7 +122,10 @@ export default function ProgramLevel() {
                 <div key={w.id} className="p-3">
                   <div className="flex items-center justify-between gap-3">
                     <WorkstreamName w={w} />
-                    <StatusDot status={w.status} />
+                    <div className="flex items-center gap-2 shrink-0">
+                      <StatusDot status={w.status} />
+                      <QuickFeedback itemId={w.id} itemLabel={w.name} />
+                    </div>
                   </div>
                   <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -144,7 +155,8 @@ export default function ProgramLevel() {
                 <tr style={{ background: '#1f9bb0' }} className="text-white">
                   <th className="text-left font-semibold px-3 py-2">Tower</th>
                   <th className="text-left font-semibold px-3 py-2 w-24">Go live</th>
-                  <th className="text-center font-semibold px-3 py-2 w-20">Status</th>
+                  <th className="text-center font-semibold px-3 py-2 w-16">Status</th>
+                  <th className="text-center font-semibold px-3 py-2 w-20">Feedback</th>
                 </tr>
               </thead>
               <tbody>
@@ -156,6 +168,9 @@ export default function ProgramLevel() {
                     <td className="px-3 py-2 text-slate-600">{t.goLive}</td>
                     <td className="px-3 py-2 text-center">
                       <StatusDot status={t.status} />
+                    </td>
+                    <td className="px-3 py-2 text-center">
+                      <QuickFeedback itemId={t.id} itemLabel={t.name} />
                     </td>
                   </tr>
                 ))}
