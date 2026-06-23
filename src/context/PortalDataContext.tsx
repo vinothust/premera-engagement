@@ -1,44 +1,92 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 import { DEFAULT_PORTAL_DATA, type PortalData } from '../data/portalData'
+import { apiFetch } from '../lib/api'
+import { useAuth } from './AuthContext'
 
-const STORAGE_KEY = 'ustpremera_portaldata_v2'
+const STORAGE_KEY = 'ustpremera_portaldata_v6'
 
 interface Ctx {
   data: PortalData
-  /** Replace the full dataset and persist it (used by the Admin page Save). */
+  loading: boolean
+  error: string | null
   save: (next: PortalData) => void
-  /** Restore the seeded defaults. */
   reset: () => void
 }
 
 const PortalDataContext = createContext<Ctx | null>(null)
 
-function load(): PortalData {
+function loadCache(): PortalData {
   try {
     const raw = localStorage.getItem(STORAGE_KEY)
     if (raw) return { ...DEFAULT_PORTAL_DATA, ...(JSON.parse(raw) as PortalData) }
-  } catch {
-    /* ignore corrupt storage */
-  }
+  } catch { /* ignore corrupt storage */ }
   return DEFAULT_PORTAL_DATA
 }
 
+function persist(d: PortalData): void {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)) } catch { /* ignore */ }
+}
+
 export function PortalDataProvider({ children }: { children: ReactNode }) {
-  const [data, setData] = useState<PortalData>(load)
+  const { loading: authLoading, token } = useAuth()
+  const [data, setData]   = useState<PortalData>(loadCache)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+  const [etag, setEtag]   = useState<string | null>(null)
 
-  // Persist on every change.
+  // Fetch from API once auth is resolved; re-fetch if token changes
   useEffect(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
-    } catch {
-      /* storage may be unavailable (private mode) — UI still works in-memory */
-    }
-  }, [data])
+    if (authLoading) return
+    setLoading(true)
+    apiFetch('/portal')
+      .then(async res => {
+        const et = res.headers.get('ETag')
+        if (et) setEtag(et)
+        const json = await res.json() as PortalData
+        setData(json)
+        persist(json)
+        setError(null)
+      })
+      .catch((err: Error) => setError(err.message))
+      .finally(() => setLoading(false))
+  }, [authLoading, token])
 
-  const save = useCallback((next: PortalData) => setData(next), [])
-  const reset = useCallback(() => setData(DEFAULT_PORTAL_DATA), [])
+  // Optimistically update local state; persist to API in background
+  const save = useCallback((next: PortalData) => {
+    setData(next)
+    persist(next)
+    const headers: Record<string, string> = {}
+    if (etag) headers['If-Match'] = etag
+    apiFetch('/portal', { method: 'PUT', body: JSON.stringify(next), headers })
+      .then(async res => {
+        const et = res.headers.get('ETag')
+        if (et) setEtag(et)
+        const json = await res.json() as PortalData
+        setData(json)
+        persist(json)
+      })
+      .catch((err: Error) => setError(err.message))
+  }, [etag])
 
-  const value = useMemo(() => ({ data, save, reset }), [data, save, reset])
+  const reset = useCallback(() => {
+    apiFetch('/portal/reset', { method: 'POST' })
+      .then(async res => {
+        const json = await res.json() as PortalData
+        setData(json)
+        setEtag(null)
+        persist(json)
+        setError(null)
+      })
+      .catch(() => {
+        setData(DEFAULT_PORTAL_DATA)
+        persist(DEFAULT_PORTAL_DATA)
+      })
+  }, [])
+
+  const value = useMemo(
+    () => ({ data, loading, error, save, reset }),
+    [data, loading, error, save, reset],
+  )
   return <PortalDataContext.Provider value={value}>{children}</PortalDataContext.Provider>
 }
 

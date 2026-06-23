@@ -20,7 +20,7 @@ export default function IssuesTable({ rows }: { rows: IssueRow[] }) {
         <table className="hidden sm:table w-full text-sm border-collapse">
           <thead>
             <tr style={{ background: '#dfe3e6' }} className="text-slate-700">
-              <th className="text-left font-bold px-3 py-2">Issue/Risks/Dependencies</th>
+              <th className="text-left font-bold px-3 py-2">Risks &amp; Issues</th>
               <th className="text-left font-bold px-3 py-2">Mitigation Plan/Next Steps</th>
               <th className="text-left font-bold px-3 py-2 w-16">Date</th>
               <th className="text-center font-bold px-3 py-2 w-16">Status</th>
@@ -71,7 +71,7 @@ export default function IssuesTable({ rows }: { rows: IssueRow[] }) {
         {/* ---- Mobile stacked list ---- */}
         <div className="sm:hidden">
           <div style={{ background: '#dfe3e6' }} className="px-3 py-2 font-bold text-slate-700 text-sm">
-            Issue / Risks / Dependencies
+            Risks &amp; Issues
           </div>
           {rows.map((row, i) => (
             <div key={row.id} className={`px-3 py-3 border-b border-slate-100 ${i % 2 ? 'bg-slate-50' : 'bg-white'}`}>

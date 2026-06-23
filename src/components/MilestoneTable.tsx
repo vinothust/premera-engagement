@@ -5,9 +5,12 @@ import QuickFeedback from './QuickFeedback'
 
 interface Props {
   headLabel: string
-  statusLabel?: string // "Rag" (Tower) or "Status" (Program)
+  statusLabel?: string
   sections: MilestoneSection[]
-  headColor?: string // header band color
+  headColor?: string
+  headTextColor?: string
+  sectionColor?: string
+  sectionTextColor?: string
 }
 
 export default function MilestoneTable({
@@ -15,13 +18,16 @@ export default function MilestoneTable({
   statusLabel = 'Status',
   sections,
   headColor = '#1f9bb0',
+  headTextColor = '#ffffff',
+  sectionColor = '#eceadb',
+  sectionTextColor = '#334155',
 }: Props) {
   return (
     <div>
       {/* ---- Desktop / tablet table ---- */}
       <table className="hidden sm:table w-full text-sm border-collapse">
         <thead>
-          <tr style={{ background: headColor }} className="text-white">
+          <tr style={{ background: headColor, color: headTextColor }}>
             <th className="text-left font-semibold px-3 py-2">{headLabel}</th>
             <th className="text-left font-semibold px-3 py-2 w-24">Due Date</th>
             <th className="text-left font-semibold px-3 py-2 w-24">Revised Date</th>
@@ -32,8 +38,8 @@ export default function MilestoneTable({
         <tbody>
           {sections.map((section) => (
             <Fragment key={section.id}>
-              <tr style={{ background: '#eceadb' }}>
-                <td colSpan={4} className="px-3 py-1.5 font-semibold text-slate-700 text-[13px]">
+              <tr style={{ background: sectionColor }}>
+                <td colSpan={5} className="px-3 py-1.5 font-semibold text-[13px]" style={{ color: sectionTextColor }}>
                   {section.title}
                 </td>
               </tr>
@@ -41,7 +47,7 @@ export default function MilestoneTable({
                 <tr key={row.id} className="border-b border-slate-100">
                   <td className="px-3 py-1.5 text-slate-700">{row.label}</td>
                   <td className="px-3 py-1.5 text-slate-600">{row.due}</td>
-                  <td className="px-3 py-1.5 text-slate-600">{row.revised}</td>
+                  <td className="px-3 py-1.5 text-slate-500">{row.revised || '—'}</td>
                   <td className="px-3 py-1.5 text-center">
                     <StatusDot status={row.status} />
                   </td>
@@ -57,12 +63,12 @@ export default function MilestoneTable({
 
       {/* ---- Mobile stacked list ---- */}
       <div className="sm:hidden">
-        <div style={{ background: headColor }} className="text-white font-semibold px-3 py-2 text-sm">
+        <div style={{ background: headColor, color: headTextColor }} className="font-semibold px-3 py-2 text-sm">
           {headLabel}
         </div>
         {sections.map((section) => (
           <div key={section.id}>
-            <div style={{ background: '#eceadb' }} className="px-3 py-1.5 font-semibold text-slate-700 text-[13px]">
+            <div style={{ background: sectionColor, color: sectionTextColor }} className="px-3 py-1.5 font-semibold text-[13px]">
               {section.title}
             </div>
             {section.rows.map((row) => (

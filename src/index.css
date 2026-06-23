@@ -67,3 +67,8 @@ body {
   font-weight: 600;
 }
 
+/* AG-Grid: center-align header label text for tagged columns */
+.ag-center-aligned-header .ag-header-cell-label {
+  justify-content: center;
+}
+

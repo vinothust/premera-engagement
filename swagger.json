@@ -1,0 +1,3229 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UST × Premera Engagement Portal API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/v1",
+      "description": "Local development"
+    },
+    {
+      "url": "http://your-server:8083/v1",
+      "description": "Linux server (Docker)"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Portal"
+    },
+    {
+      "name": "Program"
+    },
+    {
+      "name": "Tower"
+    },
+    {
+      "name": "Feedback"
+    },
+    {
+      "name": "Quick Feedback"
+    },
+    {
+      "name": "Audit"
+    },
+    {
+      "name": "Health"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "StatusKey": {
+        "type": "string",
+        "enum": [
+          "onTrack",
+          "atRisk",
+          "complete",
+          "delayed",
+          "notStarted"
+        ],
+        "example": "onTrack"
+      },
+      "ActionStatus": {
+        "type": "string",
+        "enum": [
+          "open",
+          "inProgress",
+          "closed"
+        ],
+        "example": "open"
+      },
+      "WorkstreamIcon": {
+        "type": "string",
+        "enum": [
+          "share2",
+          "userCog",
+          "arrowLeftRight",
+          "truck",
+          "building2",
+          "shieldCheck",
+          "clipboardCheck"
+        ],
+        "example": "shieldCheck"
+      },
+      "MilestoneRow": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "due",
+          "revised",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "mr1"
+          },
+          "label": {
+            "type": "string",
+            "example": "Contractor Transition"
+          },
+          "due": {
+            "type": "string",
+            "example": "4/1/2025"
+          },
+          "revised": {
+            "type": "string",
+            "example": "4/15/2025"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          }
+        }
+      },
+      "MilestoneRowInput": {
+        "type": "object",
+        "required": [
+          "label",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string",
+            "example": "Contractor Transition"
+          },
+          "due": {
+            "type": "string",
+            "example": "4/1/2025"
+          },
+          "revised": {
+            "type": "string",
+            "example": ""
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          }
+        }
+      },
+      "MilestoneSection": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "rows"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ms1"
+          },
+          "title": {
+            "type": "string",
+            "example": "Critical Transition Milestones"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MilestoneRow"
+            }
+          }
+        }
+      },
+      "MilestoneSectionInput": {
+        "type": "object",
+        "required": [
+          "title",
+          "rows"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string",
+            "example": "Critical Transition Milestones"
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MilestoneRowInput"
+            }
+          }
+        }
+      },
+      "RiskAction": {
+        "type": "object",
+        "required": [
+          "id",
+          "action",
+          "owner",
+          "dueDate",
+          "actionStatus"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ra1"
+          },
+          "action": {
+            "type": "string",
+            "example": "Escalate staffing gap to vendor PM"
+          },
+          "owner": {
+            "type": "string",
+            "example": "J. Alvarez"
+          },
+          "dueDate": {
+            "type": "string",
+            "example": "3/15"
+          },
+          "actionStatus": {
+            "$ref": "#/components/schemas/ActionStatus"
+          }
+        }
+      },
+      "RiskActionInput": {
+        "type": "object",
+        "required": [
+          "action",
+          "owner",
+          "dueDate",
+          "actionStatus"
+        ],
+        "properties": {
+          "action": {
+            "type": "string",
+            "example": "Escalate staffing gap to vendor PM"
+          },
+          "owner": {
+            "type": "string",
+            "example": "J. Alvarez"
+          },
+          "dueDate": {
+            "type": "string",
+            "example": "3/15"
+          },
+          "actionStatus": {
+            "$ref": "#/components/schemas/ActionStatus"
+          }
+        }
+      },
+      "IssueRow": {
+        "type": "object",
+        "required": [
+          "id",
+          "issue",
+          "mitigations",
+          "date",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ir1"
+          },
+          "issue": {
+            "type": "string",
+            "example": "Staffing shortage in EDI team"
+          },
+          "mitigations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Engaged backup vendor",
+              "Weekly escalation call"
+            ]
+          },
+          "date": {
+            "type": "string",
+            "example": "2/24"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          },
+          "needsPremeraAttention": {
+            "type": "boolean",
+            "example": true
+          },
+          "riskActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RiskAction"
+            }
+          }
+        }
+      },
+      "IssueRowInput": {
+        "type": "object",
+        "required": [
+          "issue",
+          "mitigations",
+          "date",
+          "status"
+        ],
+        "properties": {
+          "issue": {
+            "type": "string",
+            "example": "Staffing shortage in EDI team"
+          },
+          "mitigations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Engaged backup vendor"
+            ]
+          },
+          "date": {
+            "type": "string",
+            "example": "2/24"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          },
+          "needsPremeraAttention": {
+            "type": "boolean",
+            "example": false
+          },
+          "riskActions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RiskActionInput"
+            }
+          }
+        }
+      },
+      "TowerGoLive": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "goLive",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "tgl1"
+          },
+          "name": {
+            "type": "string",
+            "example": "ITO"
+          },
+          "goLive": {
+            "type": "string",
+            "example": "6/1/2025"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          }
+        }
+      },
+      "TowerGoLiveInput": {
+        "type": "object",
+        "required": [
+          "name",
+          "goLive",
+          "status"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "ITO"
+          },
+          "goLive": {
+            "type": "string",
+            "example": "6/1/2025"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          }
+        }
+      },
+      "Workstream": {
+        "type": "object",
+        "required": [
+          "id",
+          "icon",
+          "name",
+          "status",
+          "accomplishments",
+          "activities"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "ws1"
+          },
+          "icon": {
+            "$ref": "#/components/schemas/WorkstreamIcon"
+          },
+          "name": {
+            "type": "string",
+            "example": "Information Security"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          },
+          "accomplishments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Completed SOC2 gap assessment"
+            ]
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Finalize IAM cutover runbook"
+            ]
+          }
+        }
+      },
+      "WorkstreamInput": {
+        "type": "object",
+        "required": [
+          "icon",
+          "name",
+          "status",
+          "accomplishments",
+          "activities"
+        ],
+        "properties": {
+          "icon": {
+            "$ref": "#/components/schemas/WorkstreamIcon"
+          },
+          "name": {
+            "type": "string",
+            "example": "Information Security"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusKey"
+          },
+          "accomplishments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ProgramTab": {
+        "type": "object",
+        "required": [
+          "levelLabel",
+          "workstreams",
+          "towers",
+          "milestones",
+          "issues"
+        ],
+        "properties": {
+          "levelLabel": {
+            "type": "string",
+            "example": "\u003C\u003CITO Program Level\u003E\u003E"
+          },
+          "workstreams": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Workstream"
+            }
+          },
+          "towers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TowerGoLive"
+            }
+          },
+          "milestones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MilestoneSection"
+            }
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IssueRow"
+            }
+          }
+        }
+      },
+      "TowerBlock": {
+        "type": "object",
+        "required": [
+          "levelLabel",
+          "accomplishments",
+          "activities",
+          "milestones",
+          "keyActivities",
+          "issues"
+        ],
+        "properties": {
+          "levelLabel": {
+            "type": "string",
+            "example": "\u003C\u003CTower Level\u003E\u003E"
+          },
+          "accomplishments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "activities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "milestones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MilestoneSection"
+            }
+          },
+          "keyActivities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MilestoneSection"
+            }
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IssueRow"
+            }
+          }
+        }
+      },
+      "PortalData": {
+        "type": "object",
+        "required": [
+          "asOf",
+          "program",
+          "tower"
+        ],
+        "properties": {
+          "asOf": {
+            "type": "string",
+            "example": "06/12/2026"
+          },
+          "program": {
+            "type": "object",
+            "required": [
+              "ito",
+              "bpo"
+            ],
+            "properties": {
+              "ito": {
+                "$ref": "#/components/schemas/ProgramTab"
+              },
+              "bpo": {
+                "$ref": "#/components/schemas/ProgramTab"
+              }
+            }
+          },
+          "tower": {
+            "$ref": "#/components/schemas/TowerBlock"
+          }
+        }
+      },
+      "PortalMeta": {
+        "type": "object",
+        "required": [
+          "asOf"
+        ],
+        "properties": {
+          "asOf": {
+            "type": "string",
+            "example": "06/12/2026"
+          }
+        }
+      },
+      "ProgramMeta": {
+        "type": "object",
+        "required": [
+          "levelLabel"
+        ],
+        "properties": {
+          "levelLabel": {
+            "type": "string",
+            "example": "\u003C\u003CITO Program Level\u003E\u003E"
+          }
+        }
+      },
+      "StringList": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "example": [
+          "Completed SOC2 gap assessment",
+          "Finalized vendor contracts"
+        ]
+      },
+      "FeedbackEntry": {
+        "type": "object",
+        "required": [
+          "id",
+          "rating",
+          "area",
+          "priority",
+          "subject",
+          "createdAt"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "fb_91a3b2c4"
+          },
+          "rating": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "example": 4
+          },
+          "area": {
+            "type": "string",
+            "example": "Application Support"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "Low",
+              "Medium",
+              "High",
+              "Critical"
+            ],
+            "example": "Medium"
+          },
+          "subject": {
+            "type": "string",
+            "example": "Faster P2 turnaround"
+          },
+          "details": {
+            "type": "string",
+            "example": "EDI gateway incident handled well."
+          },
+          "submittedBy": {
+            "type": "string",
+            "example": "user@premera.com"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-06-16T14:32:00Z"
+          }
+        }
+      },
+      "FeedbackInput": {
+        "type": "object",
+        "required": [
+          "rating",
+          "area",
+          "priority",
+          "subject"
+        ],
+        "properties": {
+          "rating": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5,
+            "example": 5
+          },
+          "area": {
+            "type": "string",
+            "example": "Application Support"
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "Low",
+              "Medium",
+              "High",
+              "Critical"
+            ],
+            "example": "Medium"
+          },
+          "subject": {
+            "type": "string",
+            "example": "Faster P2 turnaround"
+          },
+          "details": {
+            "type": "string",
+            "example": "EDI gateway incident handled well."
+          }
+        }
+      },
+      "FeedbackSummary": {
+        "type": "object",
+        "required": [
+          "count",
+          "average"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 12
+          },
+          "average": {
+            "type": "number",
+            "format": "float",
+            "example": 4.4
+          }
+        }
+      },
+      "FeedbackListResponse": {
+        "type": "object",
+        "required": [
+          "entries"
+        ],
+        "properties": {
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FeedbackEntry"
+            }
+          },
+          "nextCursor": {
+            "type": "string",
+            "example": "MjA="
+          }
+        }
+      },
+      "QuickFeedbackEntry": {
+        "type": "object",
+        "required": [
+          "itemId",
+          "vote",
+          "updatedAt"
+        ],
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "example": "pmr8"
+          },
+          "vote": {
+            "type": "string",
+            "enum": [
+              "up",
+              "down"
+            ],
+            "example": "down"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Date looks optimistic given current staffing."
+          },
+          "submittedBy": {
+            "type": "string",
+            "example": "user@premera.com"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-06-16T14:40:00Z"
+          }
+        }
+      },
+      "QuickFeedbackInput": {
+        "type": "object",
+        "required": [
+          "vote"
+        ],
+        "properties": {
+          "vote": {
+            "type": "string",
+            "enum": [
+              "up",
+              "down"
+            ],
+            "example": "down"
+          },
+          "comment": {
+            "type": "string",
+            "example": "Date looks optimistic given current staffing."
+          }
+        }
+      },
+      "AuditEntry": {
+        "type": "object",
+        "required": [
+          "id",
+          "actor",
+          "action",
+          "resource",
+          "timestamp"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "a1b2c3d4"
+          },
+          "actor": {
+            "type": "string",
+            "example": "user@premera.com"
+          },
+          "action": {
+            "type": "string",
+            "enum": [
+              "create",
+              "update",
+              "delete",
+              "reset"
+            ],
+            "example": "update"
+          },
+          "resource": {
+            "type": "string",
+            "example": "portal.program.ito.issues.ir1"
+          },
+          "diff": {
+            "type": "object"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-06-16T14:32:00Z"
+          }
+        }
+      },
+      "DevLoginRequest": {
+        "type": "object",
+        "required": [
+          "sub",
+          "role"
+        ],
+        "properties": {
+          "sub": {
+            "type": "string",
+            "example": "user@premera.com"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "viewer",
+              "admin"
+            ],
+            "example": "admin"
+          }
+        }
+      },
+      "DevLoginResponse": {
+        "type": "object",
+        "required": [
+          "token",
+          "sub",
+          "role"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+          },
+          "sub": {
+            "type": "string",
+            "example": "user@premera.com"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "viewer",
+              "admin"
+            ],
+            "example": "admin"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message",
+              "requestId"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "BAD_REQUEST",
+                  "UNAUTHENTICATED",
+                  "FORBIDDEN",
+                  "NOT_FOUND",
+                  "CONFLICT",
+                  "VALIDATION_ERROR",
+                  "INTERNAL"
+                ]
+              },
+              "message": {
+                "type": "string",
+                "example": "status must be one of onTrack, atRisk, complete, delayed, notStarted"
+              },
+              "field": {
+                "type": "string",
+                "example": "program.ito.workstreams[2].status"
+              },
+              "requestId": {
+                "type": "string",
+                "example": "req_8f2c1a4b"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "Missing or invalid token",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Authenticated but insufficient role",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "ValidationError": {
+        "description": "Validation failed",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      },
+      "Conflict": {
+        "description": "Optimistic-lock version mismatch",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "programKey": {
+        "name": "programKey",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "enum": [
+            "ito",
+            "bpo"
+          ]
+        }
+      },
+      "itemId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "sectionId": {
+        "name": "sectionId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "issueId": {
+        "name": "issueId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      },
+      "actionId": {
+        "name": "actionId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "Health"
+        ],
+        "summary": "Liveness check",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Service is up",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/dev-login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Issue a dev JWT",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DevLoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Token issued",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DevLoginResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal": {
+      "get": {
+        "tags": [
+          "Portal"
+        ],
+        "summary": "Get full portal data",
+        "responses": {
+          "200": {
+            "description": "Current portal data",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalData"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Portal"
+        ],
+        "summary": "Replace full portal data",
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "\"3\""
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortalData"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved document",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalData"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "409": {
+            "$ref": "#/components/responses/Conflict"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/reset": {
+      "post": {
+        "tags": [
+          "Portal"
+        ],
+        "summary": "Restore seeded defaults",
+        "responses": {
+          "200": {
+            "description": "Restored document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalData"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/portal/meta": {
+      "get": {
+        "tags": [
+          "Portal"
+        ],
+        "summary": "Get portal meta (asOf date)",
+        "responses": {
+          "200": {
+            "description": "Meta fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalMeta"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Portal"
+        ],
+        "summary": "Update asOf date",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PortalMeta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated meta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortalMeta"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}": {
+      "get": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Get full program tab",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Program tab",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgramTab"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Replace full program tab",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgramTab"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved tab",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgramTab"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/meta": {
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Update program tab levelLabel",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgramMeta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated meta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgramMeta"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/workstreams": {
+      "get": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "List workstreams",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workstream list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Workstream"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Create a workstream",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkstreamInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created workstream",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workstream"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/workstreams/{id}": {
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Update a workstream",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WorkstreamInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated workstream",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Workstream"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Delete a workstream",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/towers": {
+      "get": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "List tower go-live rows",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tower go-live list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TowerGoLive"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Create a tower go-live row",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TowerGoLiveInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created row",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TowerGoLive"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/towers/{id}": {
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Update a tower go-live row",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TowerGoLiveInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated row",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TowerGoLive"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Delete a tower go-live row",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/milestones": {
+      "get": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "List milestone sections",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Milestone sections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MilestoneSection"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Create a milestone section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneSectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created section",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MilestoneSection"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/milestones/{sectionId}": {
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Update a milestone section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/sectionId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneSectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated section",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MilestoneSection"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Delete a milestone section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/sectionId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/issues": {
+      "get": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "List issues",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Issue list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IssueRow"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Create an issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueRowInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created issue",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssueRow"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/issues/{id}": {
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Update an issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueRowInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated issue",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssueRow"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Delete an issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/issues/{issueId}/actions": {
+      "get": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "List risk actions on an issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/issueId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Risk action list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RiskAction"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Add a risk action to an issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/issueId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RiskActionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created risk action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskAction"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/program/{programKey}/issues/{issueId}/actions/{actionId}": {
+      "put": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Update a risk action",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/issueId"
+          },
+          {
+            "$ref": "#/components/parameters/actionId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RiskActionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated risk action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskAction"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Program"
+        ],
+        "summary": "Delete a risk action",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/programKey"
+          },
+          {
+            "$ref": "#/components/parameters/issueId"
+          },
+          {
+            "$ref": "#/components/parameters/actionId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/tower": {
+      "get": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Get full tower block",
+        "responses": {
+          "200": {
+            "description": "Tower block",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TowerBlock"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Replace full tower block",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TowerBlock"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved block",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TowerBlock"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/tower/meta": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Update tower levelLabel",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProgramMeta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated meta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgramMeta"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/portal/tower/accomplishments": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Replace accomplishments list",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringList"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringList"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/portal/tower/activities": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Replace planned activities list",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StringList"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringList"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/portal/tower/milestones": {
+      "get": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "List tower milestone sections",
+        "responses": {
+          "200": {
+            "description": "Milestone sections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MilestoneSection"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Create a tower milestone section",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneSectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created section",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MilestoneSection"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/tower/milestones/{sectionId}": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Update a tower milestone section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sectionId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneSectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated section",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MilestoneSection"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Delete a tower milestone section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sectionId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/tower/key-activities": {
+      "get": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "List key activity sections",
+        "responses": {
+          "200": {
+            "description": "Key activity sections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MilestoneSection"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Create a key activity section",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneSectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created section",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MilestoneSection"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/tower/key-activities/{sectionId}": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Update a key activity section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sectionId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MilestoneSectionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated section",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MilestoneSection"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Delete a key activity section",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/sectionId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/tower/issues": {
+      "get": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "List tower issues",
+        "responses": {
+          "200": {
+            "description": "Issue list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/IssueRow"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Create a tower issue",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueRowInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created issue",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssueRow"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/tower/issues/{id}": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Update a tower issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueRowInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated issue",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssueRow"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Delete a tower issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/itemId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/portal/tower/issues/{issueId}/actions": {
+      "get": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "List risk actions on a tower issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/issueId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Risk action list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RiskAction"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Add a risk action to a tower issue",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/issueId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RiskActionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created risk action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskAction"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/portal/tower/issues/{issueId}/actions/{actionId}": {
+      "put": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Update a tower risk action",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/issueId"
+          },
+          {
+            "$ref": "#/components/parameters/actionId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RiskActionInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated risk action",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RiskAction"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tower"
+        ],
+        "summary": "Delete a tower risk action",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/issueId"
+          },
+          {
+            "$ref": "#/components/parameters/actionId"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/feedback": {
+      "post": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Submit feedback",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created feedback entry",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackEntry"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "List feedback entries",
+        "parameters": [
+          {
+            "name": "area",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Low",
+                "Medium",
+                "High",
+                "Critical"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "minimum": 1,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated feedback list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackListResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/feedback/summary": {
+      "get": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Get feedback summary",
+        "responses": {
+          "200": {
+            "description": "Summary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackSummary"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/feedback/areas": {
+      "get": {
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Get valid area values",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Area list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "example": [
+                    "Application Support",
+                    "Claims Operations"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quick-feedback": {
+      "get": {
+        "tags": [
+          "Quick Feedback"
+        ],
+        "summary": "List all quick feedback votes (admin only)",
+        "parameters": [
+          {
+            "name": "vote",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "up",
+                "down"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vote list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QuickFeedbackEntry"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    },
+    "/quick-feedback/{itemId}": {
+      "get": {
+        "tags": [
+          "Quick Feedback"
+        ],
+        "summary": "Get current user's vote on a row",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Vote entry or null",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "nullable": true,
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/QuickFeedbackEntry"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Quick Feedback"
+        ],
+        "summary": "Upsert a vote on a row",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuickFeedbackInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Saved vote",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuickFeedbackEntry"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "422": {
+            "$ref": "#/components/responses/ValidationError"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Quick Feedback"
+        ],
+        "summary": "Remove a vote from a row",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Vote removed"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/audit": {
+      "get": {
+        "tags": [
+          "Audit"
+        ],
+        "summary": "List audit entries (admin only)",
+        "parameters": [
+          {
+            "name": "resource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "actor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Audit entries, newest first",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AuditEntry"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          }
+        }
+      }
+    }
+  }
+}

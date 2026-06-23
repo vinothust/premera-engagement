@@ -1,7 +1,8 @@
-import { useState, type FormEvent } from 'react'
+import { useState, useEffect, type FormEvent } from 'react'
 import { Star, Send, MessageSquareText } from 'lucide-react'
+import { apiFetch } from '../lib/api'
 
-const AREAS = [
+const FALLBACK_AREAS = [
   'Application Support',
   'Application Development',
   'Claims Operations',
@@ -16,14 +17,22 @@ const AREAS = [
   'Service Desk / IT Operations Center',
 ]
 
-interface Entry {
-  rating: number
-  area: string
-  subject: string
-  details: string
+const PRIORITY_COLORS: Record<string, string> = {
+  Low: '#64748b',
+  Medium: '#b45309',
+  High: '#c2410c',
+  Critical: '#b91c1c',
 }
 
-
+interface Entry {
+  id: string
+  rating: number
+  area: string
+  priority: string
+  subject: string
+  details?: string
+  createdAt?: string
+}
 
 function Stars({ value, onChange }: { value: number; onChange?: (v: number) => void }) {
   return (
@@ -44,26 +53,66 @@ function Stars({ value, onChange }: { value: number; onChange?: (v: number) => v
 }
 
 export default function Feedback() {
-  const [rating, setRating] = useState(0)
-  const [area, setArea] = useState('')
+  const [rating, setRating]     = useState(0)
+  const [area, setArea]         = useState('')
   const [priority, setPriority] = useState('Medium')
-  const [subject, setSubject] = useState('')
-  const [details, setDetails] = useState('')
-  const [log, setLog] = useState<Entry[]>([])
-  const [toast, setToast] = useState(false)
+  const [subject, setSubject]   = useState('')
+  const [details, setDetails]   = useState('')
+  const [log, setLog]           = useState<Entry[]>([])
+  const [avg, setAvg]           = useState<string | null>(null)
+  const [areas, setAreas]       = useState<string[]>(FALLBACK_AREAS)
+  const [toast, setToast]       = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
-  const avg = log.length ? (log.reduce((s, e) => s + e.rating, 0) / log.length).toFixed(1) : null
+  // Load entries, summary, and valid areas on mount
+  useEffect(() => {
+    apiFetch('/feedback')
+      .then(async res => {
+        const data = await res.json() as { entries: Entry[] }
+        setLog(data.entries ?? [])
+      })
+      .catch(() => { /* API unavailable — log stays empty */ })
 
-  function submit(e: FormEvent) {
+    apiFetch('/feedback/summary')
+      .then(async res => {
+        const data = await res.json() as { count: number; average: number }
+        if (data.count > 0) setAvg(data.average.toFixed(1))
+      })
+      .catch(() => { /* ignore */ })
+
+    apiFetch('/feedback/areas')
+      .then(async res => {
+        const data = await res.json() as string[]
+        if (data.length > 0) setAreas(data)
+      })
+      .catch(() => { /* fall back to FALLBACK_AREAS */ })
+  }, [])
+
+  async function submit(e: FormEvent) {
     e.preventDefault()
-    if (!subject.trim()) return
-    setLog([{ rating, area, subject, details }, ...log])
-    setSubject('')
-    setDetails('')
-    setArea('')
-    setRating(0)
-    setToast(true)
-    setTimeout(() => setToast(false), 2600)
+    if (!subject.trim() || !rating || submitting) return
+    setSubmitting(true)
+    try {
+      const res = await apiFetch('/feedback', {
+        method: 'POST',
+        body: JSON.stringify({ rating, area, priority, subject, details }),
+      })
+      const entry = await res.json() as Entry
+      const newLog = [entry, ...log]
+      setLog(newLog)
+      setAvg((newLog.reduce((s, e) => s + e.rating, 0) / newLog.length).toFixed(1))
+      setSubject('')
+      setDetails('')
+      setArea('')
+      setRating(0)
+      setPriority('Medium')
+      setToast(true)
+      setTimeout(() => setToast(false), 2600)
+    } catch {
+      /* could surface an error toast here */
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -94,7 +143,7 @@ export default function Feedback() {
               required
             >
               <option value="" disabled>Select an area…</option>
-              {AREAS.map((a) => (
+              {areas.map((a) => (
                 <option key={a} value={a}>{a}</option>
               ))}
             </select>
@@ -137,10 +186,11 @@ export default function Feedback() {
 
           <button
             type="submit"
-            className="inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-lg font-semibold shadow-sm"
+            disabled={submitting || !rating}
+            className="w-full inline-flex items-center justify-center gap-2 text-white px-5 py-2.5 rounded-lg font-semibold shadow-sm disabled:opacity-50"
             style={{ background: 'linear-gradient(150deg,#00a0df,#0067b1)' }}
           >
-            <Send size={16} /> Send to UST
+            <Send size={16} /> {submitting ? 'Sending…' : 'Send to UST'}
           </button>
         </form>
 
@@ -165,14 +215,22 @@ export default function Feedback() {
             {log.length === 0 && (
               <p className="text-sm text-slate-400 text-center py-8">No feedback submitted yet.</p>
             )}
-            {log.map((e, i) => (
-              <div key={i} className="p-3 rounded-lg border border-slate-100 bg-slate-50">
+            {log.map((e) => (
+              <div key={e.id} className="p-3 rounded-lg border border-slate-100 bg-slate-50">
                 <div className="flex items-center justify-between">
                   <div className="text-sm font-semibold text-slate-800">{e.subject}</div>
                   <Stars value={e.rating} />
                 </div>
-                <div className="text-xs font-medium mt-1" style={{ color: '#0067b1' }}>
-                  {e.area}
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs font-medium" style={{ color: '#0067b1' }}>{e.area}</span>
+                  {e.priority && (
+                    <span
+                      className="text-[10px] font-bold uppercase"
+                      style={{ color: PRIORITY_COLORS[e.priority] ?? '#64748b' }}
+                    >
+                      {e.priority}
+                    </span>
+                  )}
                 </div>
                 {e.details && <div className="text-sm text-slate-600 mt-1">{e.details}</div>}
               </div>

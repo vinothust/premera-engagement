@@ -17,7 +17,7 @@ export default function RiskSummaryBanner({ issues }: { issues: IssueRow[] }) {
       <div className="flex items-center gap-3 min-w-0">
         <AlertTriangle size={17} className="text-amber-500 shrink-0" />
         <span className="text-sm font-semibold text-amber-800">
-          Risks / Issues:{' '}
+          Risks &amp; Issues:{' '}
           <span className="text-amber-600">{atRiskCount}</span>
           {premeraCount > 0 && (
             <>

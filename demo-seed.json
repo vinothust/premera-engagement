@@ -1,0 +1,838 @@
+{
+  "asOf": "06/23/2026",
+  "program": {
+    "ito": {
+      "levelLabel": "ITO Program Level",
+      "workstreams": [
+        {
+          "id": "ws1",
+          "icon": "share2",
+          "name": "Communications & Change Management",
+          "status": "onTrack",
+          "statusMessage": "All communications milestones met on schedule; 4 town halls completed with 88% average attendance across Seattle and Tacoma offices.",
+          "accomplishments": [
+            "Delivered 12 bi-weekly stakeholder updates to 220+ Premera associates and leadership via email and Teams",
+            "Facilitated 4 Town Hall sessions across Seattle, Mountlake Terrace, and Tacoma — 88% average attendance rate",
+            "Published Change Impact Assessment covering all 7 service towers and 340 impacted roles"
+          ],
+          "activities": [
+            "Issue final go-live communications package to all Premera departments by June 27",
+            "Conduct Day One stakeholder briefing with Premera executive leadership on June 30"
+          ],
+          "milestones": [
+            {
+              "id": "ws1m1",
+              "title": "Phase 1 – Planning",
+              "rows": [
+                { "id": "ws1r1", "label": "Communications Plan Approved", "due": "1/15/2026", "revised": "1/20/2026", "status": "complete" },
+                { "id": "ws1r2", "label": "Stakeholder Briefing Deck Finalized", "due": "1/28/2026", "revised": "", "status": "complete" },
+                { "id": "ws1r3", "label": "Change Impact Assessment Complete", "due": "2/14/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws1m2",
+              "title": "Phase 2 – Execution",
+              "rows": [
+                { "id": "ws1r4", "label": "Town Hall Sessions Conducted (all sites)", "due": "5/30/2026", "revised": "", "status": "complete" },
+                { "id": "ws1r5", "label": "Go-Live Communications Package Issued", "due": "6/27/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ws2",
+          "icon": "userCog",
+          "name": "HR Conversion",
+          "status": "onTrack",
+          "statusMessage": "118 of 124 offer letters executed; 6 pending background check clearance. Benefits enrollment closed May 31 with 100% participation.",
+          "accomplishments": [
+            "Executed offer letters for 118 of 124 transitioning Premera associates; 6 pending final background checks",
+            "Configured UST benefit plans and payroll templates across all compensation bands; enrollment window closed May 31 with 100% participation"
+          ],
+          "activities": [
+            "Complete payroll parallel run for June cycle and validate against Premera actuals by June 27",
+            "Finalize I-9 and compliance documentation for remaining 6 associates by June 26"
+          ],
+          "milestones": [
+            {
+              "id": "ws2m1",
+              "title": "Pre-Conversion",
+              "rows": [
+                { "id": "ws2r1", "label": "Employee Records Transfer", "due": "2/14/2026", "revised": "2/19/2026", "status": "complete" },
+                { "id": "ws2r2", "label": "Benefits Enrollment Complete", "due": "5/31/2026", "revised": "", "status": "complete" },
+                { "id": "ws2r3", "label": "Offer Letters Executed (118/124)", "due": "6/1/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws2m2",
+              "title": "Post-Conversion",
+              "rows": [
+                { "id": "ws2r4", "label": "Payroll Parallel Run — June Cycle", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws2r5", "label": "HR Compliance Audit Sign-off", "due": "7/15/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ws3",
+          "icon": "arrowLeftRight",
+          "name": "Knowledge Transition / Hiring",
+          "status": "onTrack",
+          "statusMessage": "52 structured KT sessions completed; reverse shadow period concluded June 6 with full Premera sign-off. 2 open positions remain.",
+          "accomplishments": [
+            "Completed 52 structured KT sessions across all 7 towers — 100% of critical procedures documented and signed off",
+            "Reverse shadow period concluded June 6; Premera leads signed off on UST readiness for all primary functions"
+          ],
+          "activities": [
+            "Complete certification testing for 9 UST engineers on Premera claims adjudication system by June 27",
+            "Fill 2 remaining open positions (Claims Analyst, Sr. Service Desk Engineer) — offers extended"
+          ],
+          "milestones": [
+            {
+              "id": "ws3m1",
+              "title": "Knowledge Transfer",
+              "rows": [
+                { "id": "ws3r1", "label": "KT Schedule Published", "due": "2/3/2026", "revised": "", "status": "complete" },
+                { "id": "ws3r2", "label": "Shadow Period Complete", "due": "4/30/2026", "revised": "5/9/2026", "status": "complete" },
+                { "id": "ws3r3", "label": "Reverse Shadow Period Complete", "due": "6/6/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws3m2",
+              "title": "Hiring & Onboarding",
+              "rows": [
+                { "id": "ws3r4", "label": "Hiring Plan Approved", "due": "1/20/2026", "revised": "", "status": "complete" },
+                { "id": "ws3r5", "label": "Open Positions Filled", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws3r6", "label": "Certification Testing Sign-off", "due": "6/28/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ws4",
+          "icon": "truck",
+          "name": "Delivery & Operational Continuity",
+          "status": "atRisk",
+          "needsPremeraAttention": true,
+          "statusMessage": "Operational runbooks for Application Support tower (sections 4–7) not yet finalized; SLA reporting dashboard integration delayed — manual reporting required at go-live if not resolved.",
+          "accomplishments": [
+            "Established SLA baselines across 7 towers with Premera agreement on all 23 core metrics",
+            "Integrated ITSM workflows with Premera ServiceNow — incident, change, and problem management live since June 1",
+            "Completed parallel run for Service Desk tower — UST handling 100% of ticket volume with Premera in monitoring-only mode"
+          ],
+          "activities": [
+            "Finalize operational runbooks sections 4–7 for Application Support tower and obtain Premera sign-off by June 26",
+            "Complete SLA reporting dashboard integration with Premera BI portal before go-live"
+          ],
+          "milestones": [
+            {
+              "id": "ws4m1",
+              "title": "Operational Readiness",
+              "rows": [
+                { "id": "ws4r1", "label": "SLA Baseline Agreed (all 23 metrics)", "due": "3/14/2026", "revised": "3/21/2026", "status": "complete" },
+                { "id": "ws4r2", "label": "Operational Runbooks Finalized", "due": "6/13/2026", "revised": "", "status": "atRisk" },
+                { "id": "ws4r3", "label": "Escalation Matrix Approved", "due": "5/30/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws4m2",
+              "title": "Continuity Validation",
+              "rows": [
+                { "id": "ws4r4", "label": "Service Desk Parallel Run Sign-off", "due": "6/20/2026", "revised": "", "status": "complete" },
+                { "id": "ws4r5", "label": "SLA Reporting Dashboard Live", "due": "6/30/2026", "revised": "", "status": "atRisk" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ws5",
+          "icon": "building2",
+          "name": "Infrastructure & Facilities",
+          "status": "onTrack",
+          "statusMessage": "108 of 120 workstations provisioned; VPN profiles deployed for remote staff. Final 12 workstations on track for June 26 completion.",
+          "accomplishments": [
+            "Verified network connectivity and MPLS link quality for all 3 UST delivery centers (Seattle, Hyderabad, Chennai)",
+            "Provisioned 108 of 120 workstations with Premera standard image; remaining 12 scheduled for June 25–26"
+          ],
+          "activities": [
+            "Complete remaining 12 workstation provisioning and VPN profile deployment by June 26",
+            "Conduct final walk-through of Seattle war room and command center setup on June 28"
+          ],
+          "milestones": [
+            {
+              "id": "ws5m1",
+              "title": "Infrastructure Setup",
+              "rows": [
+                { "id": "ws5r1", "label": "Network Connectivity Verified (all sites)", "due": "3/7/2026", "revised": "3/14/2026", "status": "complete" },
+                { "id": "ws5r2", "label": "Workstation Provisioning Complete", "due": "6/26/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws5r3", "label": "VPN / Remote Access Deployed", "due": "6/20/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws5m2",
+              "title": "Facilities",
+              "rows": [
+                { "id": "ws5r4", "label": "Facility Access Badge Issuance", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws5r5", "label": "War Room / Command Center Ready", "due": "6/28/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ws6",
+          "icon": "shieldCheck",
+          "name": "Information Security",
+          "status": "onTrack",
+          "statusMessage": "SOC 2 gap assessment complete with zero critical findings. 116 of 124 staff have completed security awareness training; 8 scheduled for June 25.",
+          "accomplishments": [
+            "SOC 2 Type II gap assessment complete — zero critical findings; 3 medium findings remediated and verified",
+            "Role-based access controls configured for all 124 UST staff across 18 Premera production systems",
+            "Security awareness training completed by 116 of 124 staff (94%); remaining 8 scheduled for June 25"
+          ],
+          "activities": [
+            "Submit final compliance certification package to Premera CISO by June 27 for go-live approval",
+            "Complete security awareness training for remaining 8 associates by June 25"
+          ],
+          "milestones": [
+            {
+              "id": "ws6m1",
+              "title": "Security Assessment",
+              "rows": [
+                { "id": "ws6r1", "label": "Security Risk Assessment Complete", "due": "3/1/2026", "revised": "", "status": "complete" },
+                { "id": "ws6r2", "label": "Data Classification Reviewed", "due": "3/28/2026", "revised": "", "status": "complete" },
+                { "id": "ws6r3", "label": "Access Controls Configured (18 systems)", "due": "5/30/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws6m2",
+              "title": "Compliance",
+              "rows": [
+                { "id": "ws6r4", "label": "Compliance Certification to Premera CISO", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws6r5", "label": "Security Awareness Training — 100%", "due": "6/25/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "ws7",
+          "icon": "clipboardCheck",
+          "name": "Day One Readiness",
+          "status": "onTrack",
+          "statusMessage": "Day One playbook published and distributed. Dry run completed June 18 with no blocking issues. Hypercare roster confirmed.",
+          "accomplishments": [
+            "Day One command center playbook published and distributed to all workstream leads on June 10",
+            "Go-live dry run completed June 18 — all P1 escalation paths tested; zero blocking issues identified"
+          ],
+          "activities": [
+            "Stand up hypercare monitoring dashboard and confirm 24x7 on-call coverage roster for July 1–14",
+            "Conduct executive readiness briefing with UST and Premera leadership on June 30"
+          ],
+          "milestones": [
+            {
+              "id": "ws7m1",
+              "title": "Pre Go-Live",
+              "rows": [
+                { "id": "ws7r1", "label": "Day One Playbook Published", "due": "6/10/2026", "revised": "", "status": "complete" },
+                { "id": "ws7r2", "label": "Command Center Setup Complete", "due": "6/28/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws7r3", "label": "Go-Live Dry Run Complete", "due": "6/18/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "ws7m2",
+              "title": "Go-Live",
+              "rows": [
+                { "id": "ws7r4", "label": "Service Commencement", "due": "7/1/2026", "revised": "", "status": "onTrack" },
+                { "id": "ws7r5", "label": "Hypercare Period Initiated (July 1–14)", "due": "7/1/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        }
+      ],
+      "towers": [
+        { "id": "tg1", "name": "ITO", "goLive": "7/1/2026", "status": "onTrack" },
+        { "id": "tg2", "name": "BPO", "goLive": "7/1/2026", "status": "atRisk" }
+      ],
+      "milestones": [
+        {
+          "id": "pm1",
+          "title": "Critical Transition Milestones",
+          "rows": [
+            { "id": "pmr1", "label": "SOW's Approved", "due": "1/16/2026", "revised": "1/27/2026", "status": "complete" },
+            { "id": "pmr2", "label": "Transition Plan Approved", "due": "2/3/2026", "revised": "2/7/2026", "status": "complete" },
+            { "id": "pmr3", "label": "Associates / Contractor Communications", "due": "2/21/2026", "revised": "2/21/2026", "status": "complete" },
+            { "id": "pmr4", "label": "Phase 1 Activities Completed", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+            { "id": "pmr5", "label": "Service Commencement Date", "due": "7/1/2026", "revised": "", "status": "onTrack" }
+          ]
+        },
+        {
+          "id": "pm2",
+          "title": "Phase 1 Pre-Commencement Activities",
+          "rows": [
+            { "id": "pmr6",  "label": "Transition Planning / Plan",                   "due": "2/7/2026",  "revised": "2/10/2026", "status": "complete" },
+            { "id": "pmr7",  "label": "Associates / Contractor Communications",        "due": "2/21/2026", "revised": "",          "status": "complete" },
+            { "id": "pmr8",  "label": "Contractor Transition",                         "due": "6/13/2026", "revised": "",          "status": "complete" },
+            { "id": "pmr9",  "label": "eBiz Service Desk Transition",                  "due": "6/20/2026", "revised": "",          "status": "complete" },
+            { "id": "pmr10", "label": "Document As-Is PPM Standards",                  "due": "5/30/2026", "revised": "",          "status": "complete" },
+            { "id": "pmr11", "label": "SLA Reporting Plan / Prep / Alignment",         "due": "6/20/2026", "revised": "",          "status": "atRisk" },
+            { "id": "pmr12", "label": "Infrastructure Connectivity Readiness",         "due": "6/20/2026", "revised": "",          "status": "complete" },
+            { "id": "pmr13", "label": "Automation Assessment",                         "due": "5/30/2026", "revised": "",          "status": "complete" }
+          ]
+        },
+        {
+          "id": "pm3",
+          "title": "Phase 2 Post-Commencement Activities",
+          "rows": [
+            { "id": "pmr14", "label": "Service Stability Review (30-day)",          "due": "7/31/2026", "revised": "", "status": "notStarted" },
+            { "id": "pmr15", "label": "Work Volume Baselining Complete",            "due": "9/30/2026", "revised": "", "status": "notStarted" },
+            { "id": "pmr16", "label": "Implementing Process Standardizations",      "due": "10/1/2026", "revised": "", "status": "notStarted" },
+            { "id": "pmr17", "label": "PPM Final Version Published",                "due": "9/1/2026",  "revised": "", "status": "notStarted" }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "id": "pi1",
+          "issue": "Operational runbooks for Application Support tower (sections 4–7) not finalized — Premera SME sign-off required before parallel run can close",
+          "mitigations": [
+            "Schedule daily 2-hour review sessions with Premera App Support leads June 24–26",
+            "UST authors to complete draft of sections 4–6 by EOD June 24; section 7 by June 25"
+          ],
+          "date": "6/13",
+          "status": "atRisk",
+          "needsPremeraAttention": true,
+          "severity": "high",
+          "priority": "high",
+          "riskActions": [
+            { "id": "ra1", "action": "Premera App Support lead to review and approve runbook sections 4–6 by June 25", "owner": "Premera App Support", "dueDate": "6/25", "actionStatus": "open" },
+            { "id": "ra2", "action": "UST team to complete draft of runbook sections 4–7", "owner": "UST Delivery Lead", "dueDate": "6/24", "actionStatus": "inProgress" }
+          ]
+        },
+        {
+          "id": "pi2",
+          "issue": "SLA reporting dashboard integration with Premera BI portal delayed — manual reporting will be required at go-live if not resolved by June 28",
+          "mitigations": [
+            "Engage Premera BI team for emergency sprint June 24–27 to complete connector build",
+            "Prepare manual SLA report template as contingency for July week 1"
+          ],
+          "date": "6/20",
+          "status": "atRisk",
+          "needsPremeraAttention": true,
+          "severity": "high",
+          "priority": "medium",
+          "riskActions": [
+            { "id": "ra3", "action": "Premera BI team to complete Power BI connector configuration by June 27", "owner": "Premera Analytics", "dueDate": "6/27", "actionStatus": "open" },
+            { "id": "ra4", "action": "UST to prepare manual SLA report template as go-live fallback", "owner": "UST Analytics Lead", "dueDate": "6/25", "actionStatus": "inProgress" }
+          ]
+        },
+        {
+          "id": "pi3",
+          "issue": "Payroll parallel run showing 3 discrepancies in overtime calculations for hourly associates — must be resolved before July 1 payroll cutover",
+          "mitigations": [
+            "UST payroll team investigating root cause — suspected mapping issue in overtime rule configuration",
+            "Premera HR to validate discrepant records and confirm expected output by June 25"
+          ],
+          "date": "6/21",
+          "status": "atRisk",
+          "severity": "critical",
+          "priority": "high",
+          "riskActions": [
+            { "id": "ra5", "action": "Resolve overtime rule mapping discrepancy in UST payroll system configuration", "owner": "UST HR Workstream", "dueDate": "6/26", "actionStatus": "inProgress" }
+          ]
+        },
+        {
+          "id": "pi4",
+          "issue": "Background checks for 2 transitioning associates still pending — Day One system access provisioning may be delayed for those individuals",
+          "mitigations": [
+            "Engage background check vendor for expedited review — both cases flagged as priority",
+            "Identify interim coverage plan for affected roles if access is delayed past July 1"
+          ],
+          "date": "6/23",
+          "status": "atRisk",
+          "severity": "medium",
+          "priority": "medium",
+          "riskActions": []
+        }
+      ]
+    },
+    "bpo": {
+      "levelLabel": "BPO Program Level",
+      "workstreams": [
+        {
+          "id": "bws1",
+          "icon": "share2",
+          "name": "Communications & Change Management",
+          "status": "onTrack",
+          "statusMessage": "BPO-specific change communications delivered on schedule. Provider-facing communications approved by Premera legal and issued May 30.",
+          "accomplishments": [
+            "Issued provider-facing transition communications to 4,200+ contracted providers — approved by Premera legal on May 28",
+            "Facilitated 3 BPO-specific Town Halls covering Claims, Enrollment & Billing, and Provider Management staff"
+          ],
+          "activities": [
+            "Distribute final provider notification letter with UST contact directory by June 27",
+            "Issue internal Day One readiness memo to all BPO staff on June 30"
+          ],
+          "milestones": [
+            {
+              "id": "bws1m1",
+              "title": "Phase 1 – Planning",
+              "rows": [
+                { "id": "bws1r1", "label": "BPO Communications Plan Approved", "due": "1/20/2026", "revised": "1/24/2026", "status": "complete" },
+                { "id": "bws1r2", "label": "Provider Notification Template Approved", "due": "2/28/2026", "revised": "", "status": "complete" },
+                { "id": "bws1r3", "label": "Staff Change Impact Assessment", "due": "3/14/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "bws1m2",
+              "title": "Phase 2 – Execution",
+              "rows": [
+                { "id": "bws1r4", "label": "Provider Notifications Issued", "due": "5/30/2026", "revised": "", "status": "complete" },
+                { "id": "bws1r5", "label": "Day One Staff Readiness Memo Issued", "due": "6/30/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bws2",
+          "icon": "userCog",
+          "name": "HR Conversion",
+          "status": "onTrack",
+          "statusMessage": "All BPO staff offer letters executed. Benefits enrollment at 100%. HIPAA workforce training completion at 87% — 16 associates outstanding.",
+          "accomplishments": [
+            "Executed offer letters for all 89 transitioning BPO associates; benefits enrollment closed May 31 at 100% participation",
+            "Completed HIPAA workforce training for 73 of 89 associates (82%); remaining 16 scheduled for completion by June 27"
+          ],
+          "activities": [
+            "Complete HIPAA training for remaining 16 associates by June 27 — required before Day One PHI system access",
+            "Validate HR system data migration for all 89 associates in UST HRIS by June 26"
+          ],
+          "milestones": [
+            {
+              "id": "bws2m1",
+              "title": "Pre-Conversion",
+              "rows": [
+                { "id": "bws2r1", "label": "BPO Employee Records Transfer", "due": "2/28/2026", "revised": "3/7/2026", "status": "complete" },
+                { "id": "bws2r2", "label": "Benefits Enrollment Complete (100%)", "due": "5/31/2026", "revised": "", "status": "complete" },
+                { "id": "bws2r3", "label": "Offer Letters Executed (all 89)", "due": "6/1/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "bws2m2",
+              "title": "Post-Conversion",
+              "rows": [
+                { "id": "bws2r4", "label": "HIPAA Training — 100% Completion", "due": "6/27/2026", "revised": "", "status": "atRisk" },
+                { "id": "bws2r5", "label": "HR Compliance Audit Sign-off", "due": "7/15/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bws3",
+          "icon": "arrowLeftRight",
+          "name": "Knowledge Transition / Hiring",
+          "status": "onTrack",
+          "statusMessage": "KT complete for Claims and Enrollment towers. Provider Management KT concluded June 13 with Premera sign-off. All hiring complete except 1 position.",
+          "accomplishments": [
+            "Completed KT for Claims Adjudication (18 sessions), Enrollment & Billing (12 sessions), and Provider Management (9 sessions) — all signed off",
+            "Hired 87 of 88 required BPO staff; 1 remaining open position (Provider Appeals Specialist) — offer pending acceptance"
+          ],
+          "activities": [
+            "Complete certification testing for 12 UST claims adjusters on Premera adjudication system by June 27",
+            "Finalize onboarding for 1 remaining Provider Appeals Specialist hire"
+          ],
+          "milestones": [
+            {
+              "id": "bws3m1",
+              "title": "Knowledge Transfer",
+              "rows": [
+                { "id": "bws3r1", "label": "Claims Adjudication KT Complete", "due": "4/30/2026", "revised": "5/7/2026", "status": "complete" },
+                { "id": "bws3r2", "label": "Enrollment & Billing KT Complete", "due": "5/16/2026", "revised": "", "status": "complete" },
+                { "id": "bws3r3", "label": "Provider Management KT Complete", "due": "6/13/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "bws3m2",
+              "title": "Hiring & Onboarding",
+              "rows": [
+                { "id": "bws3r4", "label": "BPO Hiring Plan Approved", "due": "1/20/2026", "revised": "", "status": "complete" },
+                { "id": "bws3r5", "label": "All Positions Filled (88 headcount)", "due": "6/30/2026", "revised": "", "status": "onTrack" },
+                { "id": "bws3r6", "label": "Adjudication Certification Complete", "due": "6/27/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bws4",
+          "icon": "truck",
+          "name": "Delivery & Operational Continuity",
+          "status": "atRisk",
+          "needsPremeraAttention": true,
+          "statusMessage": "6 of 18 Claims Adjudication SOPs not yet reviewed by Premera SMEs — shadow training incomplete for affected functions. Escalated.",
+          "accomplishments": [
+            "Established claims processing SLA baselines: average handle time, first-pass adjudication rate, and denial rate agreed with Premera",
+            "Completed parallel run for Enrollment & Billing tower — UST processing live enrollment transactions since June 15"
+          ],
+          "activities": [
+            "Obtain Premera SME review and sign-off on 6 outstanding Claims Adjudication SOPs by June 27",
+            "Complete shadow training for 8 UST adjusters on procedures covered by outstanding SOPs"
+          ],
+          "milestones": [
+            {
+              "id": "bws4m1",
+              "title": "Operational Readiness",
+              "rows": [
+                { "id": "bws4r1", "label": "Claims SLA Baselines Agreed", "due": "3/28/2026", "revised": "4/4/2026", "status": "complete" },
+                { "id": "bws4r2", "label": "All Claims SOPs Signed Off (18/18)", "due": "6/13/2026", "revised": "", "status": "atRisk" },
+                { "id": "bws4r3", "label": "Enrollment & Billing Parallel Run", "due": "6/15/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "bws4m2",
+              "title": "Continuity Validation",
+              "rows": [
+                { "id": "bws4r4", "label": "Claims Adjudication Shadow Complete", "due": "6/30/2026", "revised": "", "status": "atRisk" },
+                { "id": "bws4r5", "label": "BPO Continuity Sign-off", "due": "6/30/2026", "revised": "", "status": "atRisk" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bws5",
+          "icon": "building2",
+          "name": "Infrastructure & Facilities",
+          "status": "onTrack",
+          "statusMessage": "All BPO system access provisioned except Provider Data Management for 14 staff — Premera IT security processing expedited request.",
+          "accomplishments": [
+            "Provisioned claims system access for 75 of 89 BPO associates; 14 pending Provider Data Management system access",
+            "Configured dedicated BPO queue routing in Premera telephony system — tested and signed off June 17"
+          ],
+          "activities": [
+            "Premera IT Security to complete Provider Data Management access provisioning for 14 UST staff by June 26",
+            "Validate call routing and IVR configuration for Provider Contact Center go-live on July 1"
+          ],
+          "milestones": [
+            {
+              "id": "bws5m1",
+              "title": "System Access",
+              "rows": [
+                { "id": "bws5r1", "label": "Claims System Access Provisioned (75)", "due": "6/1/2026",  "revised": "",          "status": "complete" },
+                { "id": "bws5r2", "label": "Provider Data Mgmt Access (14 pending)", "due": "6/26/2026", "revised": "",          "status": "atRisk" },
+                { "id": "bws5r3", "label": "Telephony / IVR Configuration Tested",   "due": "6/17/2026", "revised": "",          "status": "complete" }
+              ]
+            },
+            {
+              "id": "bws5m2",
+              "title": "Facilities",
+              "rows": [
+                { "id": "bws5r4", "label": "BPO Operations Floor Ready (Hyderabad)", "due": "6/20/2026", "revised": "", "status": "complete" },
+                { "id": "bws5r5", "label": "Quality Monitoring Station Setup",       "due": "6/28/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bws6",
+          "icon": "shieldCheck",
+          "name": "Information Security",
+          "status": "onTrack",
+          "statusMessage": "HIPAA compliance training at 82%. PHI data handling procedures signed off. BAA amendments executed with all applicable UST sub-contractors.",
+          "accomplishments": [
+            "Business Associate Agreement (BAA) amendments executed with all 3 applicable UST sub-contractors by June 1",
+            "PHI data handling and minimum necessary use procedures reviewed and signed off by Premera Compliance on June 10"
+          ],
+          "activities": [
+            "Complete HIPAA training for 16 outstanding associates by June 27 — gate for PHI system access",
+            "Submit BPO-specific compliance certification to Premera CISO by June 27"
+          ],
+          "milestones": [
+            {
+              "id": "bws6m1",
+              "title": "HIPAA & Compliance",
+              "rows": [
+                { "id": "bws6r1", "label": "BAA Amendments Executed", "due": "6/1/2026", "revised": "", "status": "complete" },
+                { "id": "bws6r2", "label": "PHI Handling Procedures Approved", "due": "6/10/2026", "revised": "", "status": "complete" },
+                { "id": "bws6r3", "label": "HIPAA Training — 100% Complete", "due": "6/27/2026", "revised": "", "status": "atRisk" }
+              ]
+            },
+            {
+              "id": "bws6m2",
+              "title": "Certification",
+              "rows": [
+                { "id": "bws6r4", "label": "BPO Compliance Cert to Premera CISO", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+                { "id": "bws6r5", "label": "Annual Security Review Scheduled", "due": "7/31/2026", "revised": "", "status": "notStarted" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bws7",
+          "icon": "clipboardCheck",
+          "name": "Day One Readiness",
+          "status": "onTrack",
+          "statusMessage": "BPO Day One checklist approved. Dry run completed June 19 — claims queue routing and escalation paths verified with no blocking issues.",
+          "accomplishments": [
+            "BPO Day One checklist approved by Premera BPO Sponsor on June 12 — all 34 items tracked to green",
+            "Go-live dry run completed June 19 — claims queue routing, provider inquiry escalation, and enrollment workflows all tested"
+          ],
+          "activities": [
+            "Confirm quality monitoring and call recording readiness for Provider Contact Center by June 27",
+            "Brief Premera BPO leadership on Day One staffing plan and escalation contacts on June 30"
+          ],
+          "milestones": [
+            {
+              "id": "bws7m1",
+              "title": "Pre Go-Live",
+              "rows": [
+                { "id": "bws7r1", "label": "BPO Day One Checklist Approved", "due": "6/12/2026", "revised": "", "status": "complete" },
+                { "id": "bws7r2", "label": "Quality Monitoring System Ready", "due": "6/27/2026", "revised": "", "status": "onTrack" },
+                { "id": "bws7r3", "label": "BPO Go-Live Dry Run Complete", "due": "6/19/2026", "revised": "", "status": "complete" }
+              ]
+            },
+            {
+              "id": "bws7m2",
+              "title": "Go-Live",
+              "rows": [
+                { "id": "bws7r4", "label": "BPO Service Commencement", "due": "7/1/2026", "revised": "", "status": "onTrack" },
+                { "id": "bws7r5", "label": "Claims Hypercare Period (July 1–21)", "due": "7/1/2026", "revised": "", "status": "onTrack" }
+              ]
+            }
+          ]
+        }
+      ],
+      "towers": [
+        { "id": "btg1", "name": "ITO", "goLive": "7/1/2026", "status": "onTrack" },
+        { "id": "btg2", "name": "BPO", "goLive": "7/1/2026", "status": "atRisk" }
+      ],
+      "milestones": [
+        {
+          "id": "bpm1",
+          "title": "Critical Transition Milestones",
+          "rows": [
+            { "id": "bpmr1", "label": "SOW's Approved",                         "due": "1/16/2026", "revised": "1/27/2026", "status": "complete" },
+            { "id": "bpmr2", "label": "Transition Plan Approved",                "due": "2/3/2026",  "revised": "2/7/2026",  "status": "complete" },
+            { "id": "bpmr3", "label": "Associates / Contractor Communications",  "due": "2/21/2026", "revised": "2/21/2026", "status": "complete" },
+            { "id": "bpmr4", "label": "Phase 1 Activities Completed",            "due": "6/27/2026", "revised": "",          "status": "onTrack" },
+            { "id": "bpmr5", "label": "Service Commencement Date",               "due": "7/1/2026",  "revised": "",          "status": "onTrack" }
+          ]
+        },
+        {
+          "id": "bpm2",
+          "title": "Phase 1 Pre-Commencement Activities",
+          "rows": [
+            { "id": "bpmr6",  "label": "Transition Planning / Plan",               "due": "2/7/2026",  "revised": "2/10/2026", "status": "complete" },
+            { "id": "bpmr7",  "label": "Associates / Contractor Communications",   "due": "2/21/2026", "revised": "",          "status": "complete" },
+            { "id": "bpmr8",  "label": "Contractor Transition",                    "due": "6/6/2026",  "revised": "",          "status": "complete" },
+            { "id": "bpmr9",  "label": "Provider Contact Center Transition",       "due": "6/20/2026", "revised": "",          "status": "complete" },
+            { "id": "bpmr10", "label": "Document As-Is Claims SOPs (18 total)",    "due": "6/13/2026", "revised": "",          "status": "atRisk" },
+            { "id": "bpmr11", "label": "SLA Reporting Plan / Prep / Alignment",   "due": "6/20/2026", "revised": "",          "status": "onTrack" },
+            { "id": "bpmr12", "label": "System Access Readiness (all 89 staff)",  "due": "6/26/2026", "revised": "",          "status": "atRisk" },
+            { "id": "bpmr13", "label": "Automation Assessment (claims queue)",     "due": "5/30/2026", "revised": "",          "status": "complete" }
+          ]
+        },
+        {
+          "id": "bpm3",
+          "title": "Phase 2 Post-Commencement Activities",
+          "rows": [
+            { "id": "bpmr14", "label": "Service Stability Review (30-day)",        "due": "7/31/2026",  "revised": "", "status": "notStarted" },
+            { "id": "bpmr15", "label": "Claims Volume Baselining Complete",        "due": "9/30/2026",  "revised": "", "status": "notStarted" },
+            { "id": "bpmr16", "label": "Process Standardizations Implemented",    "due": "10/1/2026",  "revised": "", "status": "notStarted" },
+            { "id": "bpmr17", "label": "BPO PPM Final Version Published",          "due": "9/1/2026",   "revised": "", "status": "notStarted" }
+          ]
+        }
+      ],
+      "issues": [
+        {
+          "id": "bpi1",
+          "issue": "6 of 18 Claims Adjudication SOPs not yet reviewed by Premera SMEs — shadow training incomplete for 8 UST adjusters on affected procedures",
+          "mitigations": [
+            "Daily SOP review stand-ups scheduled with Premera Claims SMEs June 24–27 (2 SOPs per session)",
+            "UST BPO leads shadowing Premera claims adjusters and capturing SOP drafts in parallel for SME review"
+          ],
+          "date": "6/13",
+          "status": "atRisk",
+          "needsPremeraAttention": true,
+          "severity": "high",
+          "priority": "high",
+          "riskActions": [
+            { "id": "bra1", "action": "Premera Claims SMEs to complete review and approval of 6 outstanding SOPs by June 27", "owner": "Premera Claims Operations", "dueDate": "6/27", "actionStatus": "open" },
+            { "id": "bra2", "action": "UST BPO leads to finalize SOP drafts for SME review — 2 per day June 24–26", "owner": "UST BPO Lead", "dueDate": "6/26", "actionStatus": "inProgress" }
+          ]
+        },
+        {
+          "id": "bpi2",
+          "issue": "Provider Data Management system access not provisioned for 14 UST staff — shadow training for provider data workflows is blocked",
+          "mitigations": [
+            "Priority access request raised with Premera IT Security on June 20 — expedited processing requested",
+            "Arrange shared workstation access at Premera office for affected staff to complete remaining shadow hours"
+          ],
+          "date": "6/20",
+          "status": "atRisk",
+          "needsPremeraAttention": true,
+          "severity": "high",
+          "priority": "medium",
+          "riskActions": [
+            { "id": "bra3", "action": "Premera IT Security to complete Provider Data Mgmt provisioning for 14 UST staff by June 26", "owner": "Premera IT Security", "dueDate": "6/26", "actionStatus": "open" },
+            { "id": "bra4", "action": "Arrange on-site shared workstation access for 14 affected staff to continue shadow training", "owner": "UST Facilities", "dueDate": "6/24", "actionStatus": "inProgress" }
+          ]
+        },
+        {
+          "id": "bpi3",
+          "issue": "HIPAA workforce training completion at 82% (73/89) — 16 associates must complete before Day One access to PHI systems is granted",
+          "mitigations": [
+            "Mandatory training sessions scheduled for all 16 outstanding associates across June 25–27",
+            "Training completion is hard gate for PHI system access provisioning — no exception pathway"
+          ],
+          "date": "6/23",
+          "status": "atRisk",
+          "severity": "high",
+          "priority": "high",
+          "riskActions": [
+            { "id": "bra5", "action": "16 associates to complete HIPAA training modules by June 27 — managers notified", "owner": "UST BPO HR", "dueDate": "6/27", "actionStatus": "inProgress" }
+          ]
+        },
+        {
+          "id": "bpi4",
+          "issue": "Enrollment & Billing reconciliation testing shows variance in 2 edge case scenarios (retro-effective date changes) — investigation underway",
+          "mitigations": [
+            "UST QA team reproducing edge cases in staging environment to isolate root cause",
+            "Premera Enrollment team reviewing whether edge cases occur in production volumes to assess impact"
+          ],
+          "date": "6/22",
+          "status": "atRisk",
+          "severity": "medium",
+          "priority": "medium",
+          "riskActions": []
+        }
+      ]
+    }
+  },
+  "tower": {
+    "levelLabel": "Application Support Tower",
+    "accomplishments": [
+      "Completed end-to-end health assessment for all 47 Premera-managed applications — 34 Tier 1, 13 Tier 2",
+      "Achieved 99.4% uptime for Premera critical production systems during 90-day transition baseline period (Apr–Jun 2026)",
+      "Migrated 12 legacy scheduled batch jobs to UST-managed automation framework — zero failures across 3-week parallel run",
+      "Deployed Datadog monitoring stack integrated with Premera NOC — 847 active monitors across applications and infrastructure",
+      "Resolved 142 open backlog tickets inherited from prior support team within first 60 days of shadow period",
+      "Established 4-tier incident response playbook aligned with Premera change management process — reviewed and approved June 10",
+      "Completed vulnerability remediation for all 23 medium-severity findings from Q1 2026 security scan",
+      "Documented As-Is architecture for all Tier 1 and Tier 2 applications — 34 ADRs published to Premera Confluence",
+      "Completed access provisioning for all 62 UST App Support staff across 18 Premera production environments"
+    ],
+    "activities": [
+      "Complete knowledge transfer certification for 6 remaining UST engineers on Premera claims processing systems by June 27",
+      "Finalize hypercare monitoring plan and 24x7 on-call coverage roster for July 1–14 by June 28",
+      "Complete operational runbook sections 4–7 for Application Support tower and obtain Premera sign-off by June 26",
+      "Validate ITSM bi-directional ticket sync between UST tooling and Premera ServiceNow in staging by June 26",
+      "Stand up SLA reporting dashboard in Premera BI portal — validate with July week-1 data by July 5",
+      "Conduct final infrastructure readiness review with Premera Infrastructure team on June 27",
+      "Execute data retention and backup validation across all Premera-managed databases before cutover on June 30",
+      "Validate disaster recovery failover for Tier 1 applications in UST-managed environment by June 27",
+      "Brief Premera application owners on UST support model, escalation paths, and SLA reporting cadence before June 30",
+      "Prepare and submit Day One war room staffing plan to Premera PMO by June 27",
+      "Deploy remaining 12 workstation provisioning and VPN profiles for App Support remote engineers by June 26"
+    ],
+    "milestones": [
+      {
+        "id": "tm1",
+        "title": "Critical Transition Milestones",
+        "rows": [
+          { "id": "tmr1", "label": "SOW's Approved",                              "due": "1/16/2026", "revised": "1/27/2026", "status": "complete" },
+          { "id": "tmr2", "label": "Transition Plan Approved",                    "due": "2/3/2026",  "revised": "2/7/2026",  "status": "complete" },
+          { "id": "tmr3", "label": "Associates / Contractor Communications",      "due": "2/21/2026", "revised": "",          "status": "complete" },
+          { "id": "tmr4", "label": "Phase 1 Activities Completed",               "due": "6/27/2026", "revised": "",          "status": "onTrack" },
+          { "id": "tmr5", "label": "Service Commencement Date",                  "due": "7/1/2026",  "revised": "",          "status": "onTrack" }
+        ]
+      }
+    ],
+    "keyActivities": [
+      {
+        "id": "ta1",
+        "title": "Phase 1 Pre-Commencement Activities",
+        "rows": [
+          { "id": "tar1", "label": "Transition Planning / Plan",                 "due": "2/7/2026",  "revised": "2/10/2026", "status": "complete" },
+          { "id": "tar2", "label": "Associates / Contractor Communications",     "due": "2/21/2026", "revised": "",          "status": "complete" },
+          { "id": "tar3", "label": "Contractor Transition",                      "due": "6/6/2026",  "revised": "",          "status": "complete" },
+          { "id": "tar4", "label": "eBiz Service Desk Transition",               "due": "6/20/2026", "revised": "",          "status": "complete" },
+          { "id": "tar5", "label": "Document As-Is PPM Standards",              "due": "5/30/2026", "revised": "",          "status": "complete" },
+          { "id": "tar6", "label": "SLA Reporting Plan / Prep / Alignment",     "due": "6/20/2026", "revised": "",          "status": "atRisk" },
+          { "id": "tar7", "label": "Infrastructure Connectivity Readiness",     "due": "6/20/2026", "revised": "",          "status": "complete" },
+          { "id": "tar8", "label": "Automation Assessment & Migration",         "due": "5/30/2026", "revised": "",          "status": "complete" }
+        ]
+      },
+      {
+        "id": "ta2",
+        "title": "Phase 2 Post-Commencement Activities",
+        "rows": [
+          { "id": "tar9",  "label": "Service Stability Review (30-day)",       "due": "7/31/2026",  "revised": "", "status": "notStarted" },
+          { "id": "tar10", "label": "Work Volume Collection and PPM",          "due": "9/1/2026",   "revised": "", "status": "notStarted" },
+          { "id": "tar11", "label": "Implementing Process Standardizations",   "due": "10/1/2026",  "revised": "", "status": "notStarted" }
+        ]
+      }
+    ],
+    "issues": [
+      {
+        "id": "ti1",
+        "issue": "ITSM bi-directional ticket sync between UST tooling and Premera ServiceNow not validated in staging — production cutover may result in lost ticket visibility for Premera operations team",
+        "mitigations": [
+          "UST integration team conducting end-to-end sync validation in staging environment June 24–25",
+          "Fallback plan: manual ticket mirroring via shared ServiceNow view during week 1 if sync is not ready"
+        ],
+        "date": "6/20",
+        "status": "atRisk",
+        "needsPremeraAttention": true,
+        "severity": "high",
+        "priority": "high",
+        "riskActions": [
+          { "id": "tra1", "action": "Complete ITSM sync validation in staging and obtain Premera ServiceNow admin sign-off by June 26", "owner": "UST Integration Lead", "dueDate": "6/26", "actionStatus": "inProgress" },
+          { "id": "tra2", "action": "Premera ServiceNow admin to configure shared view for manual fallback by June 27", "owner": "Premera IT Operations", "dueDate": "6/27", "actionStatus": "open" }
+        ]
+      },
+      {
+        "id": "ti2",
+        "issue": "6 UST engineers have not completed certification on Premera claims processing systems — cannot serve as primary on-call engineers at go-live without sign-off",
+        "mitigations": [
+          "Certification sessions scheduled June 25–27; all 6 engineers have completed prerequisite shadow hours",
+          "Senior UST engineers will provide backup coverage for uncertified engineers during July 1–7 if needed"
+        ],
+        "date": "6/21",
+        "status": "atRisk",
+        "needsPremeraAttention": false,
+        "severity": "medium",
+        "priority": "high",
+        "riskActions": [
+          { "id": "tra3", "action": "Complete certification testing for 6 engineers on claims processing systems by June 27", "owner": "UST Engineering Lead", "dueDate": "6/27", "actionStatus": "inProgress" }
+        ]
+      },
+      {
+        "id": "ti3",
+        "issue": "Disaster recovery failover test for 3 Tier 1 applications (Claims Portal, Provider Directory, Member Portal) not yet scheduled — compliance requirement before go-live sign-off",
+        "mitigations": [
+          "DR test window requested for June 27 during off-peak hours (6 PM–10 PM PT) — awaiting Premera change board approval",
+          "If June 27 window is not approved, alternative window of June 29 identified with Premera infrastructure team"
+        ],
+        "date": "6/22",
+        "status": "atRisk",
+        "severity": "high",
+        "priority": "medium",
+        "riskActions": [
+          { "id": "tra4", "action": "Premera Change Advisory Board to approve June 27 DR test window by June 24", "owner": "Premera Infrastructure", "dueDate": "6/24", "actionStatus": "open" }
+        ]
+      },
+      {
+        "id": "ti4",
+        "issue": "Application monitoring coverage gap: 8 of 47 applications not yet integrated with Datadog — manual NOC monitoring required for those applications at go-live",
+        "mitigations": [
+          "UST monitoring team completing Datadog agent installation on remaining 8 applications June 24–25",
+          "Premera NOC agreed to maintain manual checks on 8 applications during July 1–5 as fallback"
+        ],
+        "date": "6/23",
+        "status": "atRisk",
+        "severity": "medium",
+        "priority": "low",
+        "riskActions": [
+          { "id": "tra5", "action": "Complete Datadog integration for remaining 8 applications by June 26", "owner": "UST Monitoring Team", "dueDate": "6/26", "actionStatus": "inProgress" }
+        ]
+      }
+    ]
+  }
+}

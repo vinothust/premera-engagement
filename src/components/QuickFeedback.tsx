@@ -1,40 +1,50 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { ThumbsUp, ThumbsDown, X } from 'lucide-react'
+import { apiFetch } from '../lib/api'
 
 type Vote = 'up' | 'down'
 
-const STORAGE_KEY = 'ustpremera_quickfeedback_v1'
-
-function readEntry(itemId: string): { vote?: Vote; comment?: string } {
-  try {
-    return (JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}') as Record<string, { vote: Vote; comment: string }>)[itemId] ?? {}
-  } catch {
-    return {}
-  }
-}
-
-function writeEntry(itemId: string, vote: Vote, comment: string) {
-  try {
-    const store = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}') as Record<string, unknown>
-    store[itemId] = { vote, comment, timestamp: new Date().toISOString() }
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
-  } catch { /* storage unavailable */ }
-}
-
-function deleteEntry(itemId: string) {
-  try {
-    const store = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '{}') as Record<string, unknown>
-    delete store[itemId]
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(store))
-  } catch { /* storage unavailable */ }
+interface QfEntry {
+  vote: Vote
+  comment?: string
 }
 
 export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; itemLabel: string }) {
-  const [vote, setVote] = useState<Vote | undefined>(() => readEntry(itemId).vote)
+  const [vote, setVote] = useState<Vote | undefined>(undefined)
+  const [savedComment, setSavedComment] = useState('')
   const [showComment, setShowComment] = useState(false)
   const [draft, setDraft] = useState('')
-  const [popPos, setPopPos] = useState<{ top: number; right: number } | null>(null)
+  const [popPos, setPopPos] = useState<{ top: number; left: number } | null>(null)
 
+  const path = `/quick-feedback/${encodeURIComponent(itemId)}`
+
+  // Hydrate vote from API on mount
+  useEffect(() => {
+    apiFetch(path)
+      .then(async res => {
+        const entry = await res.json() as QfEntry | null
+        if (entry) {
+          setVote(entry.vote)
+          setSavedComment(entry.comment ?? '')
+        }
+      })
+      .catch(() => { /* API unavailable — start with no vote */ })
+  }, [path])
+
+  // Close popup on any scroll (capture phase) or resize
+  useEffect(() => {
+    if (!showComment) return
+    const close = () => setShowComment(false)
+    window.addEventListener('scroll', close, true)
+    window.addEventListener('resize', close)
+    return () => {
+      window.removeEventListener('scroll', close, true)
+      window.removeEventListener('resize', close)
+    }
+  }, [showComment])
+
+  // Close on Escape or outside click
   useEffect(() => {
     if (!showComment) return
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setShowComment(false) }
@@ -52,34 +62,84 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
 
   function handleUp() {
     if (vote === 'up') {
-      deleteEntry(itemId)
       setVote(undefined)
+      apiFetch(path, { method: 'DELETE' }).catch(() => setVote('up'))
     } else {
-      writeEntry(itemId, 'up', '')
       setVote('up')
       setShowComment(false)
+      apiFetch(path, { method: 'PUT', body: JSON.stringify({ vote: 'up' }) })
+        .catch(() => setVote(undefined))
     }
   }
 
   function handleDown(e: React.MouseEvent<HTMLButtonElement>) {
     if (vote === 'down') {
-      deleteEntry(itemId)
       setVote(undefined)
       setShowComment(false)
+      apiFetch(path, { method: 'DELETE' }).catch(() => setVote('down'))
       return
     }
     const rect = e.currentTarget.getBoundingClientRect()
-    setPopPos({ top: rect.bottom + 6, right: rect.right })
-    setDraft(readEntry(itemId).comment ?? '')
-    writeEntry(itemId, 'down', readEntry(itemId).comment ?? '')
+    const popupWidth = 256
+    const left = Math.max(8, Math.min(rect.right - popupWidth, window.innerWidth - popupWidth - 8))
+    setPopPos({ top: rect.bottom + 6, left })
+    setDraft(savedComment)
     setVote('down')
     setShowComment(true)
+    apiFetch(path, { method: 'PUT', body: JSON.stringify({ vote: 'down', comment: savedComment }) })
+      .catch(() => { setVote(undefined); setShowComment(false) })
   }
 
   function submitComment() {
-    writeEntry(itemId, 'down', draft)
-    setShowComment(false)
+    apiFetch(path, { method: 'PUT', body: JSON.stringify({ vote: 'down', comment: draft }) })
+      .then(() => { setSavedComment(draft); setShowComment(false) })
+      .catch(() => setShowComment(false))
   }
+
+  // Portal renders outside any ancestor transform/overflow — fixes AG-Grid clip + scroll drift
+  const popup = showComment && popPos
+    ? createPortal(
+        <div
+          data-qf-pop
+          className="fixed z-[9999] w-64 bg-white rounded-lg shadow-xl border border-slate-200 p-3"
+          style={{ top: popPos.top, left: popPos.left }}
+          onClick={e => e.stopPropagation()}
+        >
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-xs font-semibold text-slate-700">What's your concern?</span>
+            <button onClick={() => setShowComment(false)} className="p-0.5 rounded hover:bg-slate-100 transition">
+              <X size={12} className="text-slate-400" />
+            </button>
+          </div>
+          <p className="text-xs text-slate-400 truncate mb-2">{itemLabel}</p>
+          <textarea
+            className="w-full text-xs border border-slate-200 rounded px-2 py-1.5 resize-none focus:outline-none focus:ring-1 focus:ring-[#0067b1] text-slate-700 placeholder:text-slate-300"
+            rows={3}
+            placeholder="Describe the concern..."
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+          />
+          <div className="flex justify-end gap-2 mt-2">
+            <button
+              onClick={() => setShowComment(false)}
+              className="px-2 py-1 text-xs text-slate-500 hover:text-slate-700 transition"
+            >
+              Skip
+            </button>
+            <button
+              onClick={submitComment}
+              className="px-3 py-1 text-xs font-semibold text-white rounded transition hover:opacity-90"
+              style={{ background: '#0067b1' }}
+            >
+              Submit
+            </button>
+          </div>
+        </div>,
+        document.body
+      )
+    : null
 
   return (
     <>
@@ -108,45 +168,7 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
         </button>
       </div>
 
-      {showComment && popPos && (
-        <div
-          data-qf-pop
-          className="fixed z-50 w-64 bg-white rounded-lg shadow-xl border border-slate-200 p-3"
-          style={{ top: popPos.top, right: window.innerWidth - popPos.right }}
-        >
-          <div className="flex items-center justify-between mb-1.5">
-            <span className="text-xs font-semibold text-slate-700">Quick feedback</span>
-            <button onClick={() => setShowComment(false)} className="p-0.5 rounded hover:bg-slate-100 transition">
-              <X size={12} className="text-slate-400" />
-            </button>
-          </div>
-          <p className="text-xs text-slate-400 truncate mb-2">{itemLabel}</p>
-          <textarea
-            className="w-full text-xs border border-slate-200 rounded px-2 py-1.5 resize-none focus:outline-none focus:ring-1 focus:ring-[#0067b1] text-slate-700 placeholder:text-slate-300"
-            rows={3}
-            placeholder="What's the concern?"
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
-          />
-          <div className="flex justify-end gap-2 mt-2">
-            <button
-              onClick={() => setShowComment(false)}
-              className="px-2 py-1 text-xs text-slate-500 hover:text-slate-700 transition"
-            >
-              Skip
-            </button>
-            <button
-              onClick={submitComment}
-              className="px-3 py-1 text-xs font-semibold text-white rounded transition hover:opacity-90"
-              style={{ background: '#0067b1' }}
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      )}
+      {popup}
     </>
   )
 }

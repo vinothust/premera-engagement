@@ -1,17 +1,15 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
-import { Settings } from 'lucide-react'
+import { Settings, Menu, X } from 'lucide-react'
 import './index.css'
 import ProgramLevel from './pages/ProgramLevel'
-import TowerLevel from './pages/TowerLevel'
 import Feedback from './pages/Feedback'
 import Admin from './pages/Admin'
 import Risks from './pages/Risks'
 
 const NAV = [
   { to: '/program', label: 'Program Level' },
-  { to: '/tower', label: 'Tower Level' },
-  { to: '/risks', label: 'Risks & Actions' },
+  { to: '/risks', label: 'Risks & Issues' },
   { to: '/feedback', label: 'Feedback to UST' },
 ]
 
@@ -37,40 +35,41 @@ function LiveClock() {
 }
 
 function TopBar() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <nav className="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-4 min-w-0">
-          {/* co-brand */}
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="h-9 px-3 rounded-md flex items-center justify-center text-white font-bold text-sm" style={{ background: 'linear-gradient(150deg,#16263b,#0b2440)' }}>
-              UST
-            </div>
-            <span className="text-slate-300">×</span>
-            <div className="h-9 w-9 rounded-md flex items-center justify-center text-white font-bold" style={{ background: 'linear-gradient(150deg,#00a0df,#0067b1)' }}>
-              P
-            </div>
-            <div className="ml-2 leading-tight hidden lg:block">
-              <div className="text-sm font-bold text-slate-800">Engagement Portal</div>
-              <div className="text-[11px] text-slate-400">UST · Premera Blue Cross</div>
-            </div>
+        {/* co-brand */}
+        <div className="flex items-center gap-2 shrink-0">
+          <div className="h-9 px-3 rounded-md flex items-center justify-center" style={{ background: 'linear-gradient(150deg,#16263b,#0b2440)' }}>
+            <img src="/logo-main-white.svg" alt="UST" className="h-5 w-auto max-w-[72px] object-contain" />
           </div>
+          <span className="text-slate-300">×</span>
+          <div className="h-9 px-2 flex items-center justify-center">
+            <img src="/pbc_logo.svg" alt="Premera Blue Cross" className="h-6 w-auto max-w-[110px] object-contain" />
+          </div>
+          <div className="ml-1 leading-tight hidden lg:block">
+            <div className="text-sm font-bold text-slate-800">Engagement Portal</div>
+            <div className="text-[11px] text-slate-400">UST · Premera Blue Cross</div>
+          </div>
+        </div>
 
-          <div className="flex gap-1 overflow-x-auto no-scrollbar">
-            {NAV.map((n) => (
-              <NavLink
-                key={n.to}
-                to={n.to}
-                className={({ isActive }) =>
-                  `whitespace-nowrap px-3 py-2 rounded-md text-sm font-medium transition ${
-                    isActive ? 'bg-[#e7f1fa] text-[#0067b1]' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`
-                }
-              >
-                {n.label}
-              </NavLink>
-            ))}
-          </div>
+        {/* desktop nav */}
+        <div className="hidden sm:flex gap-1">
+          {NAV.map((n) => (
+            <NavLink
+              key={n.to}
+              to={n.to}
+              className={({ isActive }) =>
+                `whitespace-nowrap px-3 py-2 rounded-md text-sm font-medium transition ${
+                  isActive ? 'bg-[#e7f1fa] text-[#0067b1]' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`
+              }
+            >
+              {n.label}
+            </NavLink>
+          ))}
         </div>
 
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
@@ -89,8 +88,36 @@ function TopBar() {
             <Settings size={16} />
             <span className="hidden md:inline">Admin</span>
           </NavLink>
+          {/* mobile hamburger */}
+          <button
+            className="sm:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100 transition"
+            onClick={() => setMenuOpen(v => !v)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* mobile dropdown nav */}
+      {menuOpen && (
+        <div className="sm:hidden border-t border-slate-200 bg-white/95 backdrop-blur px-4 py-3 flex flex-col gap-1">
+          {NAV.map((n) => (
+            <NavLink
+              key={n.to}
+              to={n.to}
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `block px-3 py-2.5 rounded-md text-sm font-medium transition ${
+                  isActive ? 'bg-[#e7f1fa] text-[#0067b1]' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                }`
+              }
+            >
+              {n.label}
+            </NavLink>
+          ))}
+        </div>
+      )}
     </nav>
   )
 }
@@ -103,7 +130,6 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/program" replace />} />
           <Route path="/program" element={<ProgramLevel />} />
-          <Route path="/tower" element={<TowerLevel />} />
           <Route path="/risks" element={<Risks />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/admin" element={<Admin />} />
