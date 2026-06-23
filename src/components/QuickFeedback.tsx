@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { ThumbsUp, ThumbsDown, X } from 'lucide-react'
 import { apiFetch } from '../lib/api'
+import { useAuth } from '../context/AuthContext'
 
 type Vote = 'up' | 'down'
 
@@ -11,6 +12,7 @@ interface QfEntry {
 }
 
 export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; itemLabel: string }) {
+  const { loading: authLoading, token } = useAuth()
   const [vote, setVote] = useState<Vote | undefined>(undefined)
   const [savedComment, setSavedComment] = useState('')
   const [showComment, setShowComment] = useState(false)
@@ -21,6 +23,7 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
 
   // Hydrate vote from API on mount
   useEffect(() => {
+    if (authLoading || !token) return
     apiFetch(path)
       .then(async res => {
         const entry = await res.json() as QfEntry | null
@@ -30,7 +33,7 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
         }
       })
       .catch(() => { /* API unavailable — start with no vote */ })
-  }, [path])
+  }, [authLoading, path, token])
 
   // Close popup on any scroll (capture phase) or resize
   useEffect(() => {

@@ -25,16 +25,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const stored = sessionStorage.getItem(TOKEN_KEY)
+    const storedRole = (sessionStorage.getItem(ROLE_KEY) as 'viewer' | 'admin' | null) ?? 'admin'
+    const storedSub = sessionStorage.getItem(SUB_KEY) ?? 'dev@premera.com'
+
     if (stored) {
       setApiToken(stored)
       setToken(stored)
       setRole(sessionStorage.getItem(ROLE_KEY))
       setSub(sessionStorage.getItem(SUB_KEY))
-      setLoading(false)
-      return
     }
-    // Auto dev-login — silent fallback when backend is not running
-    devLogin('dev@premera.com', 'admin')
+
+    // Always refresh token for current backend on startup.
+    // Falls back to stored token when backend/auth is unavailable.
+    devLogin(storedSub, storedRole)
       .then(data => {
         sessionStorage.setItem(TOKEN_KEY, data.token)
         sessionStorage.setItem(ROLE_KEY,  data.role)
@@ -43,7 +46,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setRole(data.role)
         setSub(data.sub)
       })
-      .catch(() => { /* backend not available — proceed without token */ })
+      .catch(() => {
+        if (!stored) {
+          setApiToken(null)
+          setToken(null)
+          setRole(null)
+          setSub(null)
+        }
+      })
       .finally(() => setLoading(false))
   }, [])
 
