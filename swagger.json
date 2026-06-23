@@ -10,7 +10,7 @@
       "description": "Local development"
     },
     {
-      "url": "http://your-server:8083/v1",
+      "url": "http://10.100.242.71:8083/v1",
       "description": "Linux server (Docker)"
     }
   ],
