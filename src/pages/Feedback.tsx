@@ -1,5 +1,5 @@
 import { useState, useEffect, type FormEvent } from 'react'
-import { Star, Send, MessageSquareText } from 'lucide-react'
+import { Star, Send, MessageSquareText, CheckCircle2, X } from 'lucide-react'
 import { apiFetch } from '../lib/api'
 
 const FALLBACK_AREAS = [
@@ -107,7 +107,6 @@ export default function Feedback() {
       setRating(0)
       setPriority('Medium')
       setToast(true)
-      setTimeout(() => setToast(false), 2600)
     } catch {
       /* could surface an error toast here */
     } finally {
@@ -124,7 +123,7 @@ export default function Feedback() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Form */}
-        <form onSubmit={submit} className="card p-6 space-y-5">
+        <form data-tour="feedback-form" onSubmit={submit} className="card p-6 space-y-5">
           <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
             <MessageSquareText size={18} style={{ color: '#0067b1' }} /> New Feedback
           </h2>
@@ -240,11 +239,30 @@ export default function Feedback() {
       </div>
 
       {toast && (
-        <div
-          className="fixed bottom-6 right-6 text-white px-5 py-3 rounded-lg shadow-lg font-medium"
-          style={{ background: '#1aa260' }}
-        >
-          Feedback sent to UST — thank you!
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4" style={{ background: 'rgba(15,23,42,0.55)' }}>
+          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-sm p-8 flex flex-col items-center text-center">
+            <div className="w-16 h-16 rounded-full flex items-center justify-center mb-5" style={{ background: 'rgba(26,162,96,0.1)' }}>
+              <CheckCircle2 size={36} className="text-emerald-600" />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Feedback Received!</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Your feedback has been captured and the Premera-UST engagement team will review it and take the necessary action.
+            </p>
+            <button
+              onClick={() => setToast(false)}
+              className="mt-6 px-6 py-2.5 text-sm font-semibold text-white rounded-lg transition hover:opacity-90"
+              style={{ background: 'linear-gradient(150deg,#00a0df,#0067b1)' }}
+            >
+              Close
+            </button>
+            <button
+              onClick={() => setToast(false)}
+              className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition"
+              aria-label="Close"
+            >
+              <X size={16} />
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -231,9 +231,9 @@ function HealthScorecard({ workstreams }: { workstreams: Workstream[] }) {
   const complete = counts['complete'] ?? 0
 
   return (
-    <div className="flex flex-wrap items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-slate-200 bg-white shadow-sm">
+    <div data-tour="scorecard" className="flex flex-wrap items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-slate-200 bg-white shadow-sm">
       <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">
-        Operational Health Across {total} Program Areas
+        Program Scorecard &middot; {total} Workstreams
       </span>
       <div className="flex flex-wrap gap-2 ml-auto">
         <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-green-50 border border-green-200">
@@ -423,19 +423,26 @@ export default function ProgramLevel() {
 
       <RisksSection issues={p.issues} />
 
-      <div className="flex mb-6 border-b border-slate-200">
+      {/* ITO / BPO segmented switcher */}
+      <div data-tour="tab-switcher" className="mb-6 p-1 rounded-xl bg-slate-100 flex gap-1" role="tablist" aria-label="Program division">
         {(['ito', 'bpo'] as const).map((k) => (
           <button
             key={k}
+            role="tab"
+            aria-selected={tab === k}
             onClick={() => handleTabChange(k)}
-            className={`flex-1 py-2.5 flex flex-col items-center border-b-2 -mb-px transition ${
+            className={`flex-1 py-2.5 px-4 rounded-lg flex flex-col items-center gap-0.5 transition-all duration-200 ${
               tab === k
-                ? 'border-[#0067b1] text-[#0067b1]'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
+                ? 'bg-white shadow-sm text-[#0067b1] ring-1 ring-slate-200/80'
+                : 'text-slate-500 hover:text-slate-700 hover:bg-white/60 cursor-pointer'
             }`}
           >
-            <span className="text-sm font-bold">{TAB_META[k].short}</span>
-            <span className="text-[11px] font-normal opacity-75 leading-tight">{TAB_META[k].full}</span>
+            <span className={`text-sm font-bold tracking-wide ${tab === k ? 'text-[#0067b1]' : 'text-slate-600'}`}>
+              {TAB_META[k].short}
+            </span>
+            <span className={`text-[11px] leading-tight ${tab === k ? 'text-[#0067b1]/70' : 'text-slate-400'}`}>
+              {TAB_META[k].full}
+            </span>
           </button>
         ))}
       </div>
@@ -443,7 +450,7 @@ export default function ProgramLevel() {
       <div className="space-y-6">
 
         {/* ── AG-Grid (desktop md+) ── */}
-        <div className="card overflow-hidden hidden md:block">
+        <div data-tour="workstream-grid" className="card overflow-hidden hidden md:block">
           <ExpandContext.Provider value={toggleExpand}>
             <AgGridReact
               theme={portalTheme}

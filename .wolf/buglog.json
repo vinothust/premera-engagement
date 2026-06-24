@@ -864,6 +864,182 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-06-23T04:37:35.643Z"
+    },
+    {
+      "id": "bug-055",
+      "timestamp": "2026-06-24T08:33:24.640Z",
+      "error_message": "Missing guard clause",
+      "file": "src/App.tsx",
+      "root_cause": "No early return/throw for edge case: !localStorage.getItem(TOUR_KEY",
+      "fix": "Added guard clause: if (!localStorage.getItem(TOUR_KEY)",
+      "tags": [
+        "auto-detected",
+        "guard-clause",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:33:24.640Z"
+    },
+    {
+      "id": "bug-056",
+      "timestamp": "2026-06-24T08:34:00.584Z",
+      "error_message": "CSS fix: background",
+      "file": "src/pages/Feedback.tsx",
+      "root_cause": "background: '#1aa260' → 'linear-gradient(150deg,#00a0df,#0067b1)'",
+      "fix": "Changed background: '#1aa260' → 'linear-gradient(150deg,#00a0df,#0067b1)'",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:34:00.584Z"
+    },
+    {
+      "id": "bug-057",
+      "timestamp": "2026-06-24T08:34:09.939Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/pages/Feedback.tsx",
+      "root_cause": "Had \"bg-white rounded-2xl shadow-2xl w-full max-w-sm p",
+      "fix": "Changed to \"relative bg-white rounded-2xl shadow-2xl w-full m",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:34:09.939Z"
+    },
+    {
+      "id": "bug-058",
+      "timestamp": "2026-06-24T08:39:09.977Z",
+      "error_message": "CSS fix: body",
+      "file": "src/App.tsx",
+      "root_cause": "body: 'Premera stakeholders can submit structured feedback, rate service quality, and track the full history of submissions. Your input drives continuous improvement across the engagement.', → 'A structured channel for Premera stakeholders to share what\\'s working and where UST should improve. All submissions are logged, timestamped, and visible to both teams.',",
+      "fix": "Changed body: 'Premera stakeholders can submit structured feedback, rate service quality, and track the full history of submissions. Your input drives continuous improvement across the engagement.', → 'A structured channel for Premera stakeholders to share what\\'s working and where UST should improve. All submissions are logged, timestamped, and visible to both teams.',",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-06-24T08:39:41.238Z"
+    },
+    {
+      "id": "bug-059",
+      "timestamp": "2026-06-24T08:39:57.402Z",
+      "error_message": "CSS fix: hover",
+      "file": "src/pages/ProgramLevel.tsx",
+      "root_cause": "hover: text-slate-800' → text-slate-700 hover:bg-white/60 cursor-pointer'",
+      "fix": "Changed hover: text-slate-800' → text-slate-700 hover:bg-white/60 cursor-pointer'",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:39:57.403Z"
+    },
+    {
+      "id": "bug-060",
+      "timestamp": "2026-06-24T08:40:24.931Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/App.tsx",
+      "root_cause": "Had 'ustpremera_tour_v1'",
+      "fix": "Changed to 'ustpremera_tour_v2'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:40:24.931Z"
+    },
+    {
+      "id": "bug-061",
+      "timestamp": "2026-06-24T08:49:12.505Z",
+      "error_message": "Null/undefined access in ",
+      "file": "src/App.tsx",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:49:12.505Z"
+    },
+    {
+      "id": "bug-062",
+      "timestamp": "2026-06-24T08:49:24.450Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/App.tsx",
+      "root_cause": "Had \"sticky top-0 z-30 bg-white/90 backdrop-blur borde",
+      "fix": "Changed to \"topbar\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-06-24T08:50:51.384Z"
+    },
+    {
+      "id": "bug-063",
+      "timestamp": "2026-06-24T08:49:34.900Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/pages/ProgramLevel.tsx",
+      "root_cause": "Had \"flex flex-wrap items-center gap-3 mb-4 px-4 py-3 ",
+      "fix": "Changed to \"scorecard\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-06-24T08:49:54.286Z"
+    },
+    {
+      "id": "bug-064",
+      "timestamp": "2026-06-24T08:50:09.533Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/pages/Risks.tsx",
+      "root_cause": "Had \"flex flex-col sm:flex-row gap-3 mb-4\"",
+      "fix": "Changed to \"risks-summary\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:50:09.533Z"
+    },
+    {
+      "id": "bug-065",
+      "timestamp": "2026-06-24T08:50:17.592Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/pages/Feedback.tsx",
+      "root_cause": "Had \"card p-6 space-y-5\"",
+      "fix": "Changed to \"feedback-form\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-24T08:50:17.592Z"
     }
   ]
 }

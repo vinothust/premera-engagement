@@ -205,7 +205,7 @@ export default function Risks() {
       <SlideHeader title="Consolidated Risks & Issues" sampleLines={[]} asOf={data.asOf} />
 
       {/* Summary pills */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-4">
+      <div data-tour="risks-summary" className="flex flex-col sm:flex-row gap-3 mb-4">
         <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-50 border border-amber-200 w-full sm:w-auto">
           <AlertTriangle size={15} className="text-amber-500 shrink-0" />
           <span className="text-sm font-semibold text-amber-800">

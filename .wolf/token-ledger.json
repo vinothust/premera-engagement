@@ -2,14 +2,14 @@
   "version": 1,
   "created_at": "2026-06-12T05:19:47.268Z",
   "lifetime": {
-    "total_tokens_estimated": 1063625,
-    "total_reads": 351,
-    "total_writes": 956,
-    "total_sessions": 22,
-    "anatomy_hits": 311,
+    "total_tokens_estimated": 1120504,
+    "total_reads": 367,
+    "total_writes": 1003,
+    "total_sessions": 25,
+    "anatomy_hits": 327,
     "anatomy_misses": 39,
-    "repeated_reads_blocked": 195,
-    "estimated_savings_vs_bare_cli": 676877
+    "repeated_reads_blocked": 204,
+    "estimated_savings_vs_bare_cli": 720961
   },
   "sessions": [
     {
@@ -7792,6 +7792,388 @@
         "writes_count": 0,
         "repeated_reads_blocked": 0,
         "anatomy_lookups": 4
+      }
+    },
+    {
+      "id": "session-2026-06-24-1357",
+      "started": "2026-06-24T08:27:43.768Z",
+      "ended": "2026-06-24T08:36:09.109Z",
+      "reads": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1524,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 2030,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 1764,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 5708,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/main.tsx",
+          "tokens_estimated": 127,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1593,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 181,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 50,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 420,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 6,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 101,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 97,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 377,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 43,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 11153,
+        "output_tokens_estimated": 2905,
+        "reads_count": 5,
+        "writes_count": 10,
+        "repeated_reads_blocked": 1,
+        "anatomy_lookups": 5
+      }
+    },
+    {
+      "id": "session-2026-06-24-1357",
+      "started": "2026-06-24T08:27:43.768Z",
+      "ended": "2026-06-24T08:40:39.881Z",
+      "reads": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 3026,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 2030,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 1764,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 5708,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/main.tsx",
+          "tokens_estimated": 127,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1593,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 181,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 50,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 420,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 6,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 101,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 97,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 377,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 43,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 869,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1242,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 306,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 11,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 12655,
+        "output_tokens_estimated": 5333,
+        "reads_count": 5,
+        "writes_count": 14,
+        "repeated_reads_blocked": 3,
+        "anatomy_lookups": 5
+      }
+    },
+    {
+      "id": "session-2026-06-24-1357",
+      "started": "2026-06-24T08:27:43.768Z",
+      "ended": "2026-06-24T08:51:48.642Z",
+      "reads": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 3026,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 2030,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 1764,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 5708,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/main.tsx",
+          "tokens_estimated": 127,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Risks.tsx",
+          "tokens_estimated": 3146,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1593,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 181,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 50,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 420,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 6,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 101,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 97,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/components/QuickFeedback.tsx",
+          "tokens_estimated": 377,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 43,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 869,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1242,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 306,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 11,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 76,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 3366,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 32,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 42,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 52,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/ProgramLevel.tsx",
+          "tokens_estimated": 39,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Risks.tsx",
+          "tokens_estimated": 33,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/pages/Feedback.tsx",
+          "tokens_estimated": 26,
+          "action": "edit"
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 33,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 15801,
+        "output_tokens_estimated": 9032,
+        "reads_count": 6,
+        "writes_count": 23,
+        "repeated_reads_blocked": 5,
+        "anatomy_lookups": 6
       }
     }
   ],

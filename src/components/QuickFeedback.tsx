@@ -18,6 +18,7 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
   const [showComment, setShowComment] = useState(false)
   const [draft, setDraft] = useState('')
   const [popPos, setPopPos] = useState<{ top: number; left: number } | null>(null)
+  const [confirming, setConfirming] = useState(false)
 
   const path = `/quick-feedback/${encodeURIComponent(itemId)}`
 
@@ -95,7 +96,12 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
 
   function submitComment() {
     apiFetch(path, { method: 'PUT', body: JSON.stringify({ vote: 'down', comment: draft }) })
-      .then(() => { setSavedComment(draft); setShowComment(false) })
+      .then(() => {
+        setSavedComment(draft)
+        setShowComment(false)
+        setConfirming(true)
+        setTimeout(() => setConfirming(false), 3500)
+      })
       .catch(() => setShowComment(false))
   }
 
@@ -144,6 +150,19 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
       )
     : null
 
+  const confirmToast = confirming
+    ? createPortal(
+        <div
+          className="fixed bottom-6 right-6 z-[9999] flex items-center gap-3 px-5 py-3.5 rounded-xl shadow-xl text-sm font-medium text-white"
+          style={{ background: 'linear-gradient(150deg,#1aa260,#15803d)', maxWidth: 340 }}
+        >
+          <span className="shrink-0">✓</span>
+          Your concern has been captured and the team will work on it.
+        </div>,
+        document.body
+      )
+    : null
+
   return (
     <>
       <div className="inline-flex items-center gap-0.5" data-qf-pop>
@@ -172,6 +191,7 @@ export default function QuickFeedback({ itemId, itemLabel }: { itemId: string; i
       </div>
 
       {popup}
+      {confirmToast}
     </>
   )
 }

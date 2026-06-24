@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-06-23T06:41:17.673Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-06-24T08:50:51.331Z
 > Files: 42 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
@@ -34,7 +34,7 @@
 ## src/
 
 - `App.css` — Styles: 8 rules, 6 media queries (~826 tok)
-- `App.tsx` — NAV (~1524 tok)
+- `App.tsx` — ─── Tour ───────────────────────────────────────────────────────────────────── (~4932 tok)
 - `index.css` — Styles: 11 rules, 9 vars (~486 tok)
 - `main.tsx` (~127 tok)
 
@@ -44,7 +44,7 @@
 - `IssuesTable.tsx` — isAtRisk — renders table (~1387 tok)
 - `Legend.tsx` — Legend (~160 tok)
 - `MilestoneTable.tsx` — MilestoneTable — renders table (~1074 tok)
-- `QuickFeedback.tsx` — STORAGE_KEY (~1764 tok)
+- `QuickFeedback.tsx` — QuickFeedback (~1979 tok)
 - `RiskActionsModal.tsx` — ACTION_STATUS — renders table (~2651 tok)
 - `RiskSummaryBanner.tsx` — RiskSummaryBanner (~432 tok)
 - `SlideHeader.tsx` — SlideHeader (~295 tok)
@@ -66,8 +66,8 @@
 ## src/pages/
 
 - `Admin.tsx` — ICON_MAP (~11556 tok)
-- `Feedback.tsx` — AREAS — renders form (~2030 tok)
-- `ProgramLevel.tsx` — isDetailRow (~5708 tok)
-- `Risks.tsx` — isAtRisk — renders table (~3146 tok)
+- `Feedback.tsx` — FALLBACK_AREAS — renders form (~2973 tok)
+- `ProgramLevel.tsx` — isDetailRow (~5837 tok)
+- `Risks.tsx` — isAtRisk — renders table (~3154 tok)
 - `TowerLevel.tsx` — BulletList (~650 tok)
 - `WaveModel.tsx` — MONTHS (~4213 tok)
