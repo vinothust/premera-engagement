@@ -2,14 +2,14 @@
   "version": 1,
   "created_at": "2026-06-12T05:19:47.268Z",
   "lifetime": {
-    "total_tokens_estimated": 1059774,
-    "total_reads": 344,
+    "total_tokens_estimated": 1063625,
+    "total_reads": 351,
     "total_writes": 956,
-    "total_sessions": 20,
-    "anatomy_hits": 307,
-    "anatomy_misses": 36,
+    "total_sessions": 22,
+    "anatomy_hits": 311,
+    "anatomy_misses": 39,
     "repeated_reads_blocked": 195,
-    "estimated_savings_vs_bare_cli": 676077
+    "estimated_savings_vs_bare_cli": 676877
   },
   "sessions": [
     {
@@ -7734,6 +7734,64 @@
         "writes_count": 1,
         "repeated_reads_blocked": 0,
         "anatomy_lookups": 1
+      }
+    },
+    {
+      "id": "session-2026-06-23-1633",
+      "started": "2026-06-23T11:03:49.560Z",
+      "ended": "2026-06-23T11:07:05.965Z",
+      "reads": [
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/lib/api.ts",
+          "tokens_estimated": 482,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/context/PortalDataContext.tsx",
+          "tokens_estimated": 480,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/App.tsx",
+          "tokens_estimated": 1524,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/src/context/AuthContext.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/.env.production",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/.env.development",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "c:/Vino/Premera/USTxPremeraUI/DEPLOY.md",
+          "tokens_estimated": 1365,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 3851,
+        "output_tokens_estimated": 0,
+        "reads_count": 7,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 4
       }
     }
   ],
