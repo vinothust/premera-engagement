@@ -232,7 +232,7 @@ function HealthScorecard({ workstreams }: { workstreams: Workstream[] }) {
 
   return (
     <div data-tour="scorecard" className="flex flex-wrap items-center gap-3 mb-4 px-4 py-3 rounded-lg border border-slate-200 bg-white shadow-sm">
-      <span className="text-xs font-bold text-slate-500 tracking-wide">
+      <span className="text-lg font-bold text-slate-500 tracking-wide">
         Program Scorecard : {total} Operational Areas
       </span>
       <div className="flex flex-wrap gap-2 ml-auto">
